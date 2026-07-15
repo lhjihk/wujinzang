@@ -216,7 +216,11 @@
       else if (tag === 'P' && cls === 'byline') blocks.push({ t: 'by', s: text });
       else if (tag === 'DIV' && cls === 'juan') blocks.push({ t: 'juan', s: text });
       else if (tag === 'DIV' && cls === 'dharani') blocks.push({ t: 'dh', s: text });
+      // 普通段落有两种写法：裸 <div> 或（div-other 等容器里的）<p>
+      else if (tag === 'P' && !cls && !el.querySelector('div,p')) blocks.push({ t: 'p', s: text });
       else if (tag === 'DIV' && !cls && !el.querySelector('div,p')) blocks.push({ t: 'p', s: text });
+      // 科判树（起信論疏科这类）：正文全是嵌套 li
+      else if (tag === 'LI' && !el.querySelector('li')) blocks.push({ t: 'p', s: text });
     });
     return blocks;
   }
