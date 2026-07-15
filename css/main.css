@@ -459,6 +459,11 @@ img { display: block; max-width: 100%; }
 .founded-line .t-mono { color: rgba(23, 19, 14, .35); }
 
 /* ---------- 藏經閣傳承說明 ---------- */
+.canon-heritage .edition-line {
+  display: inline-block; margin-top: .9em;
+  color: var(--gold);
+  font-size: .92em;
+}
 .canon-heritage {
   margin: 0 var(--pad) calc(var(--pad) * 1.6);
   padding: 1.2em 1.6em;

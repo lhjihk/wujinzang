@@ -46,8 +46,9 @@
       bindSearch();
       reveal();
       var total = canons.reduce(function (a, c) { return a + c.count; }, 0);
-      $('count').textContent = total + ' 部';
-      $('cabinet-total').textContent = canons.length + ' COLLECTIONS · ' + total + ' WORKS';
+      var tj = canons.reduce(function (a, c) { return a + (c.juans || 0); }, 0);
+      $('count').textContent = total + ' 部 · ' + tj + ' 卷';
+      $('cabinet-total').textContent = canons.length + ' CASES · ' + total + ' WORKS · ' + tj + ' FASCICLES';
     });
   }
 
@@ -91,7 +92,7 @@
       el.innerHTML =
         '<span class="cab-han">' + esc(c.code) + ' · 第' + hanNo(i + 1) + '函</span>' +
         '<span class="cab-name">' + esc(c.short || c.name) + '</span>' +
-        '<span class="cab-count">' + c.count + ' 部</span>';
+        '<span class="cab-count">' + c.count + ' 部 · ' + (c.juans || 0) + ' 卷</span>';
       function go() {
         var sec = $('sec-' + c.code);
         openSection(c, sec, true);
@@ -118,7 +119,7 @@
         '    <span class="cs-name">' + esc(c.name) + '</span>' +
         '  </div>' +
         '  <div style="display:flex;gap:2em;align-items:baseline">' +
-        '    <span class="cs-meta t-info">' + c.count + ' 部</span>' +
+        '    <span class="cs-meta t-info">' + c.count + ' 部 · ' + (c.juans || 0) + ' 卷</span>' +
         '    <span class="cs-toggle">＋</span>' +
         '  </div>' +
         '</header>' +

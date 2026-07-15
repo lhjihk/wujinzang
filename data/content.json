@@ -96,15 +96,15 @@
   "reading": {
     "eyebrow": "讀經 · THE READING ROOM",
     "title": "藏經閣",
-    "desc": "漢文大藏二十四藏、四千七百八十七部全文上架。竪排烏絲欄、墨水屏紙感、三種讀經界面。",
+    "desc": "漢文大藏二十四函、四千七百八十七部、二萬一千六百四十八卷全文上架。豎排烏絲欄、墨水屏紙感、三種讀經界面。",
     "cta": "入 閣",
     "featured_quote": "觀自在菩薩，行深般若波羅蜜多時，照見五蘊皆空，度一切苦厄。",
     "featured_src": "般若波羅蜜多心經 · 唐三藏法師玄奘譯"
   },
   "canon_page": {
     "title": "藏經閣",
-    "sub": "漢文大藏經 · 二十四藏 · 四千七百八十七部",
-    "en": "THE COMPLETE CHINESE BUDDHIST CANON — 24 COLLECTIONS · 4787 WORKS",
+    "sub": "漢文大藏經 · 二十四函 · 四千七百八十七部 · 二萬一千六百四十八卷",
+    "en": "THE CHINESE BUDDHIST CANON — 24 CASES · 4,787 WORKS · 21,648 FASCICLES",
     "intro": "自趙城金藏至嘉興方冊，自高麗雕版至大正新脩——二十四藏全文在此一閣。依藏分函，各歸其位；一函一世界。",
     "featured_label": "今日可讀",
     "featured": [
@@ -112,12 +112,14 @@
       "T0235"
     ],
     "featured_note": "《心經》《金剛經》常置案頭，餘者入函細尋。",
-    "search_placeholder": "檢索四千七百八十七部：書名、著者、編號…",
+    "search_placeholder": "檢索四千七百八十七部、二萬餘卷：書名、著者、編號…",
     "shelf_label": "諸藏列函 · THE COLLECTIONS",
     "search_hint": "檢索結果",
     "locked_note": "此典全文缺失，可於編輯臺重新上傳",
     "heritage": "閣中經文原版原繁體，一字未經簡化與刪改；插圖版畫悉數保留。諸藏各附源流，供識其寶貴。",
-    "heritage_en": "ALL TEXTS IN ORIGINAL TRADITIONAL CHINESE, UNSIMPLIFIED AND UNABRIDGED."
+    "heritage_en": "ALL TEXTS IN ORIGINAL TRADITIONAL CHINESE, UNSIMPLIFIED AND UNABRIDGED.",
+    "edition": "底本《電子佛典集成》二〇二三年春季版 · 內含《大正新脩大藏經》全帙（第一至五五冊暨第八五冊，二四五七部八九八二卷），並《卍新纂續藏經》《嘉興大藏經》等二十四藏",
+    "edition_en": "BASED ON THE 2023 SPRING DIGITAL TRIPITAKA — INCLUDING THE COMPLETE TAISHO CANON (VOLS. 1–55 & 85)"
   },
   "reader": {
     "themes": [
