@@ -22,7 +22,7 @@
 </div>
 
 <nav class="nav">
-  <a class="nav-logo" href="index.html"><span data-txt="site.name">心燈文錄</span><em>。</em></a>
+  <a class="nav-logo" href="index.html"><span data-txt="site.name">心燈文錄</span></a>
   <div class="nav-links t-info">
     <a href="index.html" class="active" data-txt="site.nav_home">梵境</a>
     <a href="canon.html" data-txt="site.nav_canon">藏經閣</a>
@@ -33,9 +33,9 @@
 <header class="hero">
   <canvas id="mandala-canvas"></canvas>
   <div class="hero-inner">
-    <h1 class="hero-title t-display" id="hero-title" data-split="hero.title">無盡藏</h1>
+    <h1 class="hero-title t-display" id="hero-title" data-split="hero.title">心燈文錄</h1>
     <div class="hero-sub">
-      <span class="t-info rise" data-txt="hero.en_line1">MURALS OF YONGLE PALACE · MOGAO GROTTOES · GYANTSE KUMBUM</span>
+      <span class="t-info rise" data-txt="hero.en_line1">MURALS OF YONGLE PALACE · MOGAO GROTTOES · TIBETAN THANGKA</span>
       <span class="t-info rise" data-txt="hero.en_line2">SCRIPTURE READING ROOM — EST. MMXXVI</span>
     </div>
   </div>
@@ -44,6 +44,8 @@
     <small data-txt="hero.quote_src">金剛般若波羅蜜經</small>
   </div>
   <div class="hero-hint t-mono rise">SCROLL ▼ 徐徐展卷</div>
+  <!-- 門臉：整個頭版的文物木質包邊，簷口取斗拱之意（形制極簡） -->
+  <div class="hero-frame" aria-hidden="true"><span class="niche-eave"></span></div>
 </header>
 
 <!-- 經文跑馬燈 -->
@@ -92,6 +94,24 @@
   <div class="gallery-grid" id="gallery-grid"><!-- boot.js 注入 --></div>
 </section>
 
+<!-- 讀經引子 -->
+<section class="reading-sec">
+  <div class="reading-bg" style="background-image:url('assets/murals/jingtu_full.webp')"></div>
+  <div class="reading-left">
+    <div>
+      <p class="sec-eyebrow t-info rise" data-txt="reading.eyebrow">讀經 · THE READING ROOM</p>
+      <h2 class="sec-title t-display rise" data-txt="reading.title">藏經閣</h2>
+    </div>
+    <p class="reading-desc rise" data-txt="reading.desc"></p>
+    <a class="reading-cta rise" href="canon.html" data-txt="reading.cta">入 閣</a>
+  </div>
+  <div class="reading-right rise">
+    <span data-txt="reading.featured_quote"></span>
+    <small data-txt="reading.featured_src"></small>
+  </div>
+</section>
+
+
 <!-- 同源：別院與頻道 -->
 <section class="links-sec">
   <div>
@@ -116,24 +136,6 @@
     </a>
   </div>
 </section>
-
-<!-- 讀經引子 -->
-<section class="reading-sec">
-  <div class="reading-bg" style="background-image:url('assets/murals/jingtu_full.webp')"></div>
-  <div class="reading-left">
-    <div>
-      <p class="sec-eyebrow t-info rise" data-txt="reading.eyebrow">讀經 · THE READING ROOM</p>
-      <h2 class="sec-title t-display rise" data-txt="reading.title">藏經閣</h2>
-    </div>
-    <p class="reading-desc rise" data-txt="reading.desc"></p>
-    <a class="reading-cta rise" href="canon.html" data-txt="reading.cta">入 閣</a>
-  </div>
-  <div class="reading-right rise">
-    <span data-txt="reading.featured_quote"></span>
-    <small data-txt="reading.featured_src"></small>
-  </div>
-</section>
-
 
 <footer class="footer">
   <span class="t-info" data-txt="site.footer_line"></span>

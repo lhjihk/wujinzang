@@ -28,7 +28,9 @@
     "en_line1": "MURALS OF YONGLE PALACE · MOGAO GROTTOES · TIBETAN THANGKA",
     "en_line2": "SCRIPTURE READING ROOM — EST. MMXXVI",
     "quote": "應無所住，而生其心",
-    "quote_src": "金剛般若波羅蜜經"
+    "quote_src": "金剛般若波羅蜜經",
+    "niche_caption": "一百八子念珠 · 靜觀",
+    "niche_caption_en": "ONE HUNDRED AND EIGHT BEADS"
   },
   "scroll_section": {
     "eyebrow": "展卷 · UNROLLING",
@@ -142,7 +144,7 @@
     "eyebrow": "同源 · FROM THE SAME HAND",
     "title": "一手所植",
     "annex_desc": "主人的另一重天地：影像、聲音與行旅。",
-    "yt_desc": "本站體系的影音頻道：禪與樂、行走與開示，專業視頻長期更新。YouTube 與 bilibili 同號，擇一而入。",
+    "yt_desc": "本站體系的影音頻道。YouTube 與 bilibili 同號更新，擇一而入。",
     "channel_label": "影音頻道 · VIDEO CHANNEL",
     "annex_label2": "別院 · SISTER SITE"
   }

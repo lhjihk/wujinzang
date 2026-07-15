@@ -26,14 +26,6 @@
     }
   })();
 
-  /* 佛龕：置於珠環中央 */
-  var shrine = document.createElement('img');
-  shrine.src = 'assets/relic_shrine.webp';
-  shrine.alt = '明代木雕隨身佛龕';
-  shrine.className = 'hero-shrine';
-  shrine.draggable = false;
-  hero.insertBefore(shrine, hero.firstChild);
-
   /* 真木珠 sprite */
   var beadImg = new Image();
   var beadReady = false;
@@ -94,18 +86,9 @@
     canvas.width = W * DPR; canvas.height = H * DPR;
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    CX = W * (W < 900 ? .5 : .70);
-    CY = H * (W < 900 ? .42 : .44);
-    R = Math.min(W, H) * (W < 900 ? .38 : .33);
-    // 佛龕跟環走；手機屏太窄，只留珠環
-    if (W < 900) { shrine.style.display = 'none'; }
-    else {
-      shrine.style.display = '';
-      var sw = R * 1.12;
-      shrine.style.width = sw + 'px';
-      shrine.style.left = (CX - sw / 2) + 'px';
-      shrine.style.top = (CY - sw * 0.34) + 'px'; // 龕寬:高 ≈ 11:7.5
-    }
+    CX = W * (W < 900 ? .5 : .68);
+    CY = H * (W < 900 ? .40 : .46);
+    R = Math.min(W, H) * (W < 900 ? .35 : .30);
     buildRing();
   }
   resize();
@@ -113,8 +96,8 @@
 
   var px = 0, py = 0;
   window.addEventListener('pointermove', function (e) {
-    px = (e.clientX / innerWidth - .5) * 12;
-    py = (e.clientY / innerHeight - .5) * 9;
+    px = (e.clientX / innerWidth - .5) * 6;
+    py = (e.clientY / innerHeight - .5) * 5;
   }, { passive: true });
 
   function draw(t) {
@@ -122,9 +105,6 @@
     var cx = CX + px, cy = CY + py;
     var rot = reduced ? 0 : t * .00004;
     var breathe = reduced ? 1 : 1 + Math.sin(t * .0006) * .008;
-
-    // 佛龕輕微視差（幅度是珠串的六成，像隔了一層）
-    shrine.style.transform = 'translate(' + (px * .6) + 'px,' + (py * .6) + 'px)';
 
     if (ring) {
       ctx.save();

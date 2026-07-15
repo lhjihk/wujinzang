@@ -102,7 +102,8 @@
 
   /* 畫廊視差：各幅隨滾動以不同速度漂移，散排更有縱深（GSAP 獨佔 transform，CSS 只管 margin） */
   function galleryParallax() {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // 觸屏/窄屏禁視差：塊狀直排下位移會互相壓疊（上輪手機錯亂的元兇）
+    if (matchMedia('(prefers-reduced-motion: reduce), (max-width: 900px), (pointer: coarse)').matches) return;
     var speeds = [-40, 60, -70, 50, 90, -30];
     gsap.utils.toArray('.gallery-grid > *').forEach(function (el, i) {
       gsap.fromTo(el, { y: 0 }, {
@@ -205,7 +206,6 @@
         '<div class="seal-stack">' +
         '  <span class="art-seal s1">心燈文錄</span>' +
         '  <span class="art-seal s2">' + ((c.site && c.site.footer_seal) || '無盡藏') + '</span>' +
-        '  <span class="art-seal s3">峨眉山房</span>' +
         '</div>';
       grid.appendChild(v);
     }
