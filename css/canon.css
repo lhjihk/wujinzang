@@ -216,6 +216,25 @@
 .canon-sec.open .cs-desc .t-info { max-width: 60em; padding: 0 var(--pad); color: rgba(74, 58, 38, .55); }
 .shelf-sentinel { grid-column: 1 / -1; height: 2px; }
 
+/* ---------- 傳承說明旁的經函文物 ---------- */
+.heritage-row {
+  display: grid; grid-template-columns: minmax(260px, 420px) 1fr;
+  gap: calc(var(--pad) * 1.2);
+  align-items: center;
+  margin: 0 var(--pad) calc(var(--pad) * 1.6);
+}
+.heritage-row .canon-heritage { margin: 0; }
+.relic-figure { text-align: center; }
+.relic-figure img {
+  width: 100%; max-width: 420px; margin: 0 auto;
+  pointer-events: none; user-select: none;
+}
+.relic-figure figcaption { color: var(--ink-soft); margin-top: .8em; }
+@media (max-width: 900px) {
+  .heritage-row { grid-template-columns: 1fr; }
+  .relic-figure img { max-width: 300px; }
+}
+
 /* ---------- 藏簡介 ---------- */
 .cs-desc { padding: 0 var(--pad) 1.4em; max-width: 46em; }
 .cs-desc .zh { font-family: var(--f-display); color: var(--ink-soft); line-height: 2; font-size: max(13px, calc(15 / var(--bsw) * 100vw)); }

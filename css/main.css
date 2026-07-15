@@ -6,8 +6,8 @@
 
 /* 站名題字：鴻雷行書（6.5KB 子集，只含站名與導航字） */
 @font-face {
-  font-family: "BrushHonglei";
-  src: url("../assets/fonts/honglei-logo.woff2") format("woff2");
+  font-family: "YanKai";
+  src: url("../assets/fonts/yankai-logo.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -123,10 +123,10 @@ img { display: block; max-width: 100%; }
 .nav a { color: inherit; }
 .nav-logo em { color: inherit; }
 .nav-logo {
-  font-family: "BrushHonglei", var(--f-display);
+  font-family: "YanKai", var(--f-display);
   font-weight: 400;
-  font-size: max(24px, calc(34 / var(--bsw) * 100vw));
-  letter-spacing: .1em;
+  font-size: max(22px, calc(31 / var(--bsw) * 100vw));
+  letter-spacing: .12em;
 }
 .nav-links { display: flex; gap: 2.4em; align-items: baseline; }
 .nav-links a { position: relative; padding-bottom: 2px; }
@@ -152,11 +152,17 @@ img { display: block; max-width: 100%; }
   pointer-events: none;
 }
 .hero-inner { position: relative; z-index: 1; }
+.hero-shrine {
+  position: absolute; z-index: 0;
+  pointer-events: none; user-select: none;
+  filter: drop-shadow(0 18px 30px rgba(23, 19, 14, .32));
+  opacity: .97;
+}
 .hero-title {
-  font-family: "BrushHonglei", var(--f-display);
+  font-family: "YanKai", var(--f-display);
   font-weight: 400;
-  font-size: calc(var(--t-hero) * 1.14);
-  display: flex; gap: .02em;
+  font-size: var(--t-hero);
+  display: flex; gap: .05em;
 }
 .hero-title span { display: inline-block; }
 .hero-sub {
@@ -272,18 +278,35 @@ img { display: block; max-width: 100%; }
 }
 
 /* ---------- 畫廊留白處的豎排偈語 ---------- */
-.gallery-verse {
+.gallery-side {
   grid-column: 5 / span 2;
-  align-self: start;
-  justify-self: end;
+  align-self: end;
+  justify-self: center;
+  display: flex; gap: 3em; align-items: flex-end;
+  padding-bottom: 2.4em;
+  pointer-events: none;
+}
+.gallery-verse {
   writing-mode: vertical-rl;
   font-family: var(--f-display); font-weight: 700;
   font-size: max(15px, calc(20 / var(--bsw) * 100vw));
   letter-spacing: .55em; line-height: 2.4;
   color: var(--ink-soft); opacity: .55;
-  margin-top: 4vw;
-  pointer-events: none;
 }
+/* 鈐印：如手卷卷尾的收藏印，硃砂陰刻，各具欹側 */
+.seal-stack { display: flex; flex-direction: column; gap: 1.4em; align-items: center; }
+.art-seal {
+  writing-mode: vertical-rl;
+  font-family: var(--f-display); font-weight: 900;
+  color: var(--cinnabar);
+  border: 2px solid var(--cinnabar);
+  padding: .45em .3em;
+  letter-spacing: .12em;
+  opacity: .82;
+}
+.art-seal.s1 { font-size: 15px; transform: rotate(-2.5deg); }
+.art-seal.s2 { font-size: 13px; transform: rotate(1.8deg); background: var(--cinnabar); color: var(--paper); opacity: .78; }
+.art-seal.s3 { font-size: 11.5px; transform: rotate(-1.2deg); }
 
 /* ---------- 第四幅旁的題記（展籤） ---------- */
 .colophon {
@@ -445,6 +468,12 @@ img { display: block; max-width: 100%; }
 .lc-desc { color: var(--ink-soft); font-size: max(13px, calc(15 / var(--bsw) * 100vw)); line-height: 2; flex: 1; }
 .link-card:hover .lc-desc { color: rgba(250, 249, 246, .7); }
 .lc-go { align-self: flex-end; letter-spacing: .2em; }
+.lc-links { display: flex; gap: 1.2em; justify-content: flex-end; }
+.lc-links .lc-go {
+  border: 1px solid currentColor; padding: .6em 1.1em;
+  transition: background .4s, color .4s;
+}
+.lc-links .lc-go:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
 @media (max-width: 900px) {
   .links-sec { grid-template-columns: 1fr; }
   .links-row { grid-template-columns: 1fr; }
@@ -498,15 +527,54 @@ img { display: block; max-width: 100%; }
 .js .hero-title span { opacity: 0; transform: translateY(60%) rotate(4deg); }
 
 /* ---------- 響應式 ---------- */
+/* 手機：朝元圖原生橫滑展卷 */
+.scroll-stage.touch-scroll {
+  height: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 12vw 0 14vw;
+}
+.scroll-stage.touch-scroll .scroll-strip {
+  position: static;
+  transform: none;
+  height: 58vh;
+  width: max-content;
+}
+.scroll-stage.touch-scroll .scroll-label { top: 3vw; }
+.scroll-stage.touch-scroll .scroll-label-r { top: 3vw; }
+.scroll-stage.touch-scroll .scroll-progress { bottom: 5vw; }
+.scroll-stage.touch-scroll::after {
+  content: "← 橫掃展卷 SWIPE →";
+  position: absolute; left: 50%; bottom: 1.6vw; transform: translateX(-50%);
+  font-family: var(--f-latin); font-size: 10px; letter-spacing: .2em;
+  color: rgba(250, 249, 246, .55);
+}
+
 @media (max-width: 900px) {
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); row-gap: 70px; }
-  .work:nth-of-type(n) { grid-column: auto / span 2; margin: 0 !important; }
-  .work:nth-of-type(2) { grid-column: auto / span 1; }
-  .work:nth-of-type(4) { grid-column: auto / span 1; }
-  .gallery-verse { display: none; }
-  .colophon { grid-column: auto / span 1; padding-bottom: 0; gap: 1.2em; }
-  .colophon-verse { font-size: 16px; }
+  /* 手機畫廊：全幅編輯式節奏——整幅 / 右縮 / 整幅 / 左縮，留白呼吸 */
+  .gallery-grid { display: block; }
+  .work { margin: 0 0 16vw !important; width: 100%; }
+  .work:nth-of-type(2) { width: 86%; margin-left: auto !important; }
+  .work:nth-of-type(3) { width: 100%; }
+  .work:nth-of-type(4) { width: 86%; margin-right: auto !important; }
+  .work-num { position: static; display: block; margin-bottom: .6em; }
+  .work-cap { margin-top: .8em; }
+  .gallery-side {
+    display: flex; justify-content: center; gap: 2.5em;
+    padding: 2vw 0 6vw; align-items: center;
+  }
+  .gallery-verse { line-height: 2; letter-spacing: .4em; max-height: 46vw; }
+  .colophon {
+    display: flex; flex-wrap: nowrap; gap: 1.6em;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding: 1.8em 0; margin-bottom: 14vw;
+  }
+  .colophon-verse { font-size: 17px; }
   .reading-sec { grid-template-columns: 1fr; }
+  .colophon { flex-wrap: wrap; }
+  .links-sec { padding: calc(var(--pad) * 2) var(--pad); }
+  .founded-line { gap: .6em 1.5em; text-align: center; }
   .reading-right { writing-mode: horizontal-tb; line-height: 2.2; letter-spacing: .2em; text-align: center; padding: 2em 0; }
   .hero-quote { display: none; }
   .scroll-head { grid-template-columns: 1fr; }

@@ -2,7 +2,7 @@
   "_version": "2.0.0",
   "_comment": "全站唯一數據源。改文案/壁畫說明/精選經文都在這裡，不用碰HTML。編輯臺(admin.html)就是給這個文件做表單。",
   "site": {
-    "name": "心灯文录",
+    "name": "心燈文錄",
     "latin": "XINDENG WENLU",
     "tagline": "RECORDS OF THE HEART-LAMP",
     "year": "MMXXVI",
@@ -11,18 +11,19 @@
     "footer_line": "畫作原件均為公有領域博物館級掃描 · 私人清修之用",
     "footer_seal": "無盡藏",
     "annex_label": "別院",
-    "annex_name": "踏破腐朽",
-    "annex_url": "https://lhjihk.github.io/bilibili-site/",
+    "annex_name": "路即天涯",
+    "annex_url": "https://zenmus.pages.dev/",
     "annex_note": "同一手植，另一重天地",
     "founded": "本站創建於四川省峨眉山 · 西元二〇二六年七月十五日",
     "founded_en": "FOUNDED AT MOUNT EMEI, SICHUAN — JULY 15, MMXXVI",
     "yt_label": "頻道",
-    "yt_name": "ZEN — 21MUS",
+    "yt_name": "心燈文錄",
     "yt_url": "https://www.youtube.com/@zen-21mus",
-    "yt_note": "法音流佈 · YOUTUBE"
+    "yt_note": "法音流佈",
+    "bili_url": "https://space.bilibili.com/600180785"
   },
   "hero": {
-    "title": "心灯文录",
+    "title": "心燈文錄",
     "sub": "佛典壁畫 · 在線讀經",
     "en_line1": "MURALS OF YONGLE PALACE · MOGAO GROTTOES · TIBETAN THANGKA",
     "en_line2": "SCRIPTURE READING ROOM — EST. MMXXVI",
@@ -141,6 +142,8 @@
     "eyebrow": "同源 · FROM THE SAME HAND",
     "title": "一手所植",
     "annex_desc": "主人的另一重天地：影像、聲音與行旅。",
-    "yt_desc": "本站體系的頻道：禪與樂，法音流佈。"
+    "yt_desc": "本站體系的影音頻道：禪與樂、行走與開示，專業視頻長期更新。YouTube 與 bilibili 同號，擇一而入。",
+    "channel_label": "影音頻道 · VIDEO CHANNEL",
+    "annex_label2": "別院 · SISTER SITE"
   }
 }

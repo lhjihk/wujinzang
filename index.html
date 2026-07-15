@@ -92,6 +92,31 @@
   <div class="gallery-grid" id="gallery-grid"><!-- boot.js 注入 --></div>
 </section>
 
+<!-- 同源：別院與頻道 -->
+<section class="links-sec">
+  <div>
+    <p class="sec-eyebrow t-info rise" data-txt="links_section.eyebrow">同源 · FROM THE SAME HAND</p>
+    <h2 class="sec-title t-display rise" data-txt="links_section.title">一手所植</h2>
+  </div>
+  <div class="links-row">
+    <div class="link-card rise">
+      <span class="t-info lc-label" data-txt="links_section.channel_label">影音頻道 · VIDEO CHANNEL</span>
+      <span class="lc-name" data-txt="site.yt_name">心燈文錄</span>
+      <span class="lc-desc" data-txt="links_section.yt_desc"></span>
+      <span class="lc-links">
+        <a class="t-info lc-go" data-href="site.yt_url" href="#" target="_blank" rel="noopener">YOUTUBE ↗</a>
+        <a class="t-info lc-go" data-href="site.bili_url" href="#" target="_blank" rel="noopener">BILIBILI ↗</a>
+      </span>
+    </div>
+    <a class="link-card rise" data-href="site.annex_url" href="#" target="_blank" rel="noopener">
+      <span class="t-info lc-label" data-txt="links_section.annex_label2">別院 · SISTER SITE</span>
+      <span class="lc-name" data-txt="site.annex_name">路即天涯</span>
+      <span class="lc-desc" data-txt="links_section.annex_desc"></span>
+      <span class="t-info lc-go"><span data-txt="site.annex_note">同一手植，另一重天地</span> ↗</span>
+    </a>
+  </div>
+</section>
+
 <!-- 讀經引子 -->
 <section class="reading-sec">
   <div class="reading-bg" style="background-image:url('assets/murals/jingtu_full.webp')"></div>
@@ -109,38 +134,22 @@
   </div>
 </section>
 
-<!-- 同源：別院與頻道 -->
-<section class="links-sec">
-  <div>
-    <p class="sec-eyebrow t-info rise" data-txt="links_section.eyebrow">同源 · FROM THE SAME HAND</p>
-    <h2 class="sec-title t-display rise" data-txt="links_section.title">一手所植</h2>
-  </div>
-  <div class="links-row">
-    <a class="link-card rise" data-href="site.yt_url" href="#" target="_blank" rel="noopener">
-      <span class="t-info lc-label" data-txt="site.yt_label">頻道</span>
-      <span class="lc-name" data-txt="site.yt_name">ZEN — 21MUS</span>
-      <span class="lc-desc" data-txt="links_section.yt_desc"></span>
-      <span class="t-info lc-go"><span data-txt="site.yt_note">法音流佈 · YOUTUBE</span> ↗</span>
-    </a>
-    <a class="link-card rise" data-href="site.annex_url" href="#" target="_blank" rel="noopener">
-      <span class="t-info lc-label" data-txt="site.annex_label">別院</span>
-      <span class="lc-name" data-txt="site.annex_name">踏破腐朽</span>
-      <span class="lc-desc" data-txt="links_section.annex_desc"></span>
-      <span class="t-info lc-go"><span data-txt="site.annex_note">同一手植，另一重天地</span> ↗</span>
-    </a>
-  </div>
-</section>
 
 <footer class="footer">
   <span class="t-info" data-txt="site.footer_line"></span>
   <a class="annex" data-href="site.yt_url" href="#" target="_blank" rel="noopener">
     <span class="t-info annex-label" data-txt="site.yt_label">頻道</span>
-    <span class="annex-name" data-txt="site.yt_name">ZEN — 21MUS</span>
+    <span class="annex-name">YouTube</span>
+    <span class="annex-mark">↗</span>
+  </a>
+  <a class="annex" data-href="site.bili_url" href="#" target="_blank" rel="noopener">
+    <span class="t-info annex-label" data-txt="site.yt_label">頻道</span>
+    <span class="annex-name">bilibili</span>
     <span class="annex-mark">↗</span>
   </a>
   <a class="annex" data-href="site.annex_url" href="#" target="_blank" rel="noopener">
     <span class="t-info annex-label" data-txt="site.annex_label">別院</span>
-    <span class="annex-name" data-txt="site.annex_name">踏破腐朽</span>
+    <span class="annex-name" data-txt="site.annex_name">路即天涯</span>
     <span class="annex-mark">↗</span>
   </a>
   <div class="footer-seal" data-txt="site.footer_seal">無盡藏</div>
@@ -158,9 +167,9 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="libs/gsap.min.js"></script>
+<script src="libs/ScrollTrigger.min.js"></script>
+<script src="libs/lenis.min.js"></script>
 <script src="js/boot.js"></script>
 <script src="js/incense.js"></script>
 <script src="js/mandala.js"></script>

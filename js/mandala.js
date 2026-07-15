@@ -1,7 +1,9 @@
-/* mandala.js — 一百八子沉香念珠
-   hero 背景懸一串老念珠：一百零八顆木珠（徑向漸變出珠光與包漿，大小微差如手串），
-   一顆碩大的佛頭母珠，一顆硃砂計數珠沿串緩行如捻珠誦持；貫珠一線隱然可見。
-   珠串預先繪在離屏畫布上，每幀只做旋轉合成，極省性能；減少動態時只懸不轉。 */
+/* mandala.js — 龕與念珠
+   hero 中央供一尊明代木雕隨身佛龕（Met 藏，原件摳圖），
+   外圍一串一百零八子念珠環繞——每顆珠子都貼真實明代木器的木紋
+   （克利夫蘭藏明代條案桌面裁切，球面光影疊加），佛頭母珠居頂，
+   一顆硃砂計數珠沿串緩行如捻珠誦持。
+   珠串預渲染離屏畫布，每幀只做旋轉合成；減少動態時靜置不轉。 */
 (function () {
   'use strict';
 
@@ -13,62 +15,77 @@
 
   var DPR = Math.min(2, window.devicePixelRatio || 1);
   var W, H, CX, CY, R, ring = null;
-
   var N = 108;
+
   var seeds = [];
-  (function () { // 每顆珠的個性：大小、色相偏移（固定隨機，像真串珠各有紋理）
+  (function () {
     var s = 9973;
     for (var i = 0; i < N; i++) {
       s = (s * 16807) % 2147483647;
-      seeds.push({ dr: (s % 1000) / 1000, dc: ((s >> 3) % 1000) / 1000 });
+      seeds.push({ dr: (s % 1000) / 1000, rot: ((s >> 4) % 628) / 100 });
     }
   })();
 
-  /* 画一颗木珠：包浆深棕，左上受光，边缘沉色，中央一点润光 */
-  function bead(c, x, y, r, tone, highlight) {
-    var g = c.createRadialGradient(x - r * .35, y - r * .4, r * .1, x, y, r);
-    g.addColorStop(0, 'rgba(' + tone.hi + ',' + highlight + ')');
-    g.addColorStop(.45, 'rgba(' + tone.mid + ',' + highlight + ')');
-    g.addColorStop(.85, 'rgba(' + tone.lo + ',' + highlight + ')');
-    g.addColorStop(1, 'rgba(' + tone.edge + ',' + (highlight * .85) + ')');
-    c.fillStyle = g;
-    c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill();
-    // 珠孔连线处的一点高光
-    c.fillStyle = 'rgba(255,246,224,' + (highlight * .35) + ')';
-    c.beginPath(); c.arc(x - r * .3, y - r * .38, r * .16, 0, Math.PI * 2); c.fill();
+  /* 佛龕：置於珠環中央 */
+  var shrine = document.createElement('img');
+  shrine.src = 'assets/relic_shrine.webp';
+  shrine.alt = '明代木雕隨身佛龕';
+  shrine.className = 'hero-shrine';
+  shrine.draggable = false;
+  hero.insertBefore(shrine, hero.firstChild);
+
+  /* 真木珠 sprite */
+  var beadImg = new Image();
+  var beadReady = false;
+  beadImg.onload = function () { beadReady = true; if (R) buildRing(); };
+  beadImg.src = 'assets/bead.webp';
+
+  function stamp(c, x, y, r, rot, alpha) {
+    c.save();
+    c.translate(x, y);
+    c.rotate(rot);
+    c.globalAlpha = alpha;
+    c.drawImage(beadImg, -r, -r, r * 2, r * 2);
+    c.restore();
   }
 
-  var WOOD = { hi: '167,124,80', mid: '124,86,52', lo: '84,56,33', edge: '52,34,20' };
-  var WOOD2 = { hi: '150,106,66', mid: '108,72,42', lo: '72,47,27', edge: '46,30,18' };
-  var CINN = { hi: '224,110,80', mid: '178,66,42', lo: '128,42,26', edge: '86,26,16' };
+  /* 硃砂計數珠：畫的（與木珠質感區分） */
+  function cinnabarBead(c, x, y, r) {
+    var g = c.createRadialGradient(x - r * .35, y - r * .4, r * .1, x, y, r);
+    g.addColorStop(0, 'rgba(224,110,80,.95)');
+    g.addColorStop(.5, 'rgba(178,66,42,.95)');
+    g.addColorStop(1, 'rgba(86,26,16,.9)');
+    c.fillStyle = g;
+    c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill();
+    c.fillStyle = 'rgba(255,240,220,.4)';
+    c.beginPath(); c.arc(x - r * .3, y - r * .38, r * .17, 0, Math.PI * 2); c.fill();
+  }
 
-  /* 离屏珠串：静态部分（108木珠+母珠+贯线） */
   function buildRing() {
-    var size = Math.ceil((R + 14) * 2 * DPR);
+    if (!beadReady) return;
+    var size = Math.ceil((R + 16) * 2 * DPR);
     ring = document.createElement('canvas');
     ring.width = ring.height = size;
     var c = ring.getContext('2d');
     c.setTransform(DPR, 0, 0, DPR, 0, 0);
     var cx = size / (2 * DPR), cy = cx;
 
-    // 贯珠线（隐约）
-    c.strokeStyle = 'rgba(84,56,33,.25)';
+    // 貫珠線
+    c.strokeStyle = 'rgba(70,46,26,.3)';
     c.lineWidth = 1.2;
     c.beginPath(); c.arc(cx, cy, R, 0, Math.PI * 2); c.stroke();
 
-    var alpha = .8;
     for (var i = 0; i < N; i++) {
       var a = (i / N) * Math.PI * 2 - Math.PI / 2;
       var x = cx + Math.cos(a) * R;
       var y = cy + Math.sin(a) * R;
-      var base = Math.max(4.2, R * .028);
-      var r = base * (0.92 + seeds[i].dr * .18);
-      bead(c, x, y, r, seeds[i].dc > .5 ? WOOD : WOOD2, alpha);
+      var base = Math.max(4.6, R * .03);
+      var r = base * (0.9 + seeds[i].dr * .22);
+      stamp(c, x, y, r, seeds[i].rot, .95);
     }
-    // 母珠（佛头）：正上方，更大，配三通小塔
-    var mx = cx, my = cy - R;
-    bead(c, mx, my, Math.max(7, R * .048), WOOD, .95);
-    bead(c, mx, my - Math.max(9, R * .06), Math.max(3.4, R * .022), WOOD2, .95);
+    // 母珠與三通
+    stamp(c, cx, cy - R, Math.max(7.5, R * .052), .3, 1);
+    stamp(c, cx, cy - R - Math.max(9, R * .062), Math.max(3.8, R * .024), 1.2, 1);
   }
 
   function resize() {
@@ -77,9 +94,18 @@
     canvas.width = W * DPR; canvas.height = H * DPR;
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    CX = W * (W < 900 ? .5 : .63);
-    CY = H * .44;
-    R = Math.min(W, H) * (W < 900 ? .37 : .33);
+    CX = W * (W < 900 ? .5 : .70);
+    CY = H * (W < 900 ? .42 : .44);
+    R = Math.min(W, H) * (W < 900 ? .38 : .33);
+    // 佛龕跟環走；手機屏太窄，只留珠環
+    if (W < 900) { shrine.style.display = 'none'; }
+    else {
+      shrine.style.display = '';
+      var sw = R * 1.12;
+      shrine.style.width = sw + 'px';
+      shrine.style.left = (CX - sw / 2) + 'px';
+      shrine.style.top = (CY - sw * 0.34) + 'px'; // 龕寬:高 ≈ 11:7.5
+    }
     buildRing();
   }
   resize();
@@ -94,27 +120,28 @@
   function draw(t) {
     ctx.clearRect(0, 0, W, H);
     var cx = CX + px, cy = CY + py;
-    var rot = reduced ? 0 : t * .00004;            // 缓不可察地转
+    var rot = reduced ? 0 : t * .00004;
     var breathe = reduced ? 1 : 1 + Math.sin(t * .0006) * .008;
 
-    ctx.save();
-    ctx.translate(cx, cy);
-    ctx.rotate(rot);
-    ctx.scale(breathe, breathe);
-    ctx.globalAlpha = .9;
-    ctx.drawImage(ring, -ring.width / (2 * DPR), -ring.height / (2 * DPR), ring.width / DPR, ring.height / DPR);
-    ctx.restore();
+    // 佛龕輕微視差（幅度是珠串的六成，像隔了一層）
+    shrine.style.transform = 'translate(' + (px * .6) + 'px,' + (py * .6) + 'px)';
 
-    // 硃砂计数珠：沿串缓行（每2.6秒过一颗），独立于串的旋转
+    if (ring) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(rot);
+      ctx.scale(breathe, breathe);
+      ctx.globalAlpha = .96;
+      ctx.drawImage(ring, -ring.width / (2 * DPR), -ring.height / (2 * DPR), ring.width / DPR, ring.height / DPR);
+      ctx.restore();
+    }
+
     if (!reduced) {
       var idx = (t / 2600) % N;
       var a = rot + (idx / N) * Math.PI * 2 - Math.PI / 2;
-      var x = cx + Math.cos(a) * R * breathe;
-      var y = cy + Math.sin(a) * R * breathe;
-      bead(ctx, x, y, Math.max(5.5, R * .036), CINN, .95);
+      cinnabarBead(ctx, cx + Math.cos(a) * R * breathe, cy + Math.sin(a) * R * breathe, Math.max(5.8, R * .038));
+      requestAnimationFrame(draw);
     }
-
-    if (!reduced) requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
 })();

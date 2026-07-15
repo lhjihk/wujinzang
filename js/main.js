@@ -14,6 +14,16 @@
     if (c) buildMarquee(c);
   });
 
+  // 保險絲：任何原因（CDN斷、腳本掛起、fetch超時）導致開卷失敗，6秒後強制揭幕
+  setTimeout(function () {
+    var l = document.getElementById('loader');
+    if (l && l.style.display !== 'none' && document.body.classList.contains('no-scroll')) {
+      l.style.display = 'none';
+      document.body.classList.remove('no-scroll');
+      revealAll();
+    }
+  }, 6000);
+
   /* ---------- 加載器 ---------- */
   function runLoader(done) {
     var num = document.getElementById('loader-num');
@@ -117,6 +127,18 @@
     var pos = document.getElementById('scroll-pos');
     if (!stage || !strip) return;
 
+    // 手機/觸屏：放棄 pin 動畫，原生橫向滑動最順手（上一站教訓：手機端最後統一收）
+    if (matchMedia('(max-width: 900px), (pointer: coarse)').matches) {
+      stage.classList.add('touch-scroll');
+      stage.addEventListener('scroll', function () {
+        var span = stage.scrollWidth - stage.clientWidth;
+        var p = span > 0 ? stage.scrollLeft / span : 0;
+        if (bar) bar.style.width = (p * 100).toFixed(1) + '%';
+        if (pos) pos.textContent = (p * 90).toFixed(1) + 'M / 90M';
+      }, { passive: true });
+      return;
+    }
+
     function span() { return Math.max(0, strip.scrollWidth - stage.clientWidth); }
 
     gsap.to(strip, {
@@ -174,11 +196,17 @@
         '<div class="colophon-seal">' + ((c.site && c.site.footer_seal) || '無盡藏') + '</div></div>';
       grid.appendChild(col);
     }
-    // 留白處的豎排偈語
+    // 留白處：豎排偈語 + 書畫收藏鈐印（如手卷卷尾）
     if (c.gallery.deco_verse) {
       var v = document.createElement('aside');
-      v.className = 'gallery-verse rise';
-      v.textContent = c.gallery.deco_verse;
+      v.className = 'gallery-side rise';
+      v.innerHTML =
+        '<div class="gallery-verse">' + c.gallery.deco_verse + '</div>' +
+        '<div class="seal-stack">' +
+        '  <span class="art-seal s1">心燈文錄</span>' +
+        '  <span class="art-seal s2">' + ((c.site && c.site.footer_seal) || '無盡藏') + '</span>' +
+        '  <span class="art-seal s3">峨眉山房</span>' +
+        '</div>';
       grid.appendChild(v);
     }
   }
