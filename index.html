@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<title>無盡藏 · WUJINZANG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Oswald:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="no-scroll">
+
+<!-- 加载器：汉字计数 + 朱印落章 -->
+<div class="loader" id="loader">
+  <div class="loader-num" id="loader-num">零</div>
+  <div class="loader-seal" id="loader-seal" data-txt="site.footer_seal">無盡藏</div>
+  <div class="loader-bar" id="loader-bar"></div>
+</div>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><span data-txt="site.name">無盡藏</span><em>。</em></a>
+  <div class="nav-links t-info">
+    <a href="index.html" class="active" data-txt="site.nav_home">梵境</a>
+    <a href="canon.html" data-txt="site.nav_canon">藏經閣</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <canvas id="fluid-canvas"></canvas>
+  <div class="hero-inner">
+    <h1 class="hero-title t-display" id="hero-title" data-split="hero.title">無盡藏</h1>
+    <div class="hero-sub">
+      <span class="t-info rise" data-txt="hero.en_line1">MURALS OF YONGLE PALACE · MOGAO GROTTOES · GYANTSE KUMBUM</span>
+      <span class="t-info rise" data-txt="hero.en_line2">SCRIPTURE READING ROOM — EST. MMXXVI</span>
+    </div>
+  </div>
+  <div class="hero-quote rise">
+    <span data-txt="hero.quote">應無所住，而生其心</span>
+    <small data-txt="hero.quote_src">金剛般若波羅蜜經</small>
+  </div>
+  <div class="hero-hint t-mono rise">SCROLL ▼ 徐徐展卷</div>
+</header>
+
+<!-- 经文跑马灯 -->
+<div class="marquee" id="marquee">
+  <div class="marquee-track" id="marquee-track"></div>
+</div>
+
+<!-- 展卷：朝元图 -->
+<section class="scroll-sec" id="scroll-sec">
+  <div class="scroll-head">
+    <div>
+      <p class="sec-eyebrow t-info rise" data-txt="scroll_section.eyebrow">展卷 · UNROLLING</p>
+      <h2 class="sec-title t-display rise" data-txt="scroll_section.title">朝元圖</h2>
+    </div>
+    <div class="scroll-meta rise">
+      <p class="t-info"><span data-txt="scroll_section.en">HOMAGE TO THE PRIMORDIAL</span></p>
+      <p class="t-info"><span data-txt="scroll_section.location">山西永樂宮 三清殿</span> — <span data-txt="scroll_section.period">元 · 1325</span> — <span data-txt="scroll_section.artist">馬君祥 及其門人 繪</span></p>
+      <p class="zh" data-txt="scroll_section.desc"></p>
+    </div>
+  </div>
+  <div class="scroll-stage" id="scroll-stage">
+    <div class="scroll-label t-info">朝元圖 · 原壁高清掃描 28379 × 1805 PX</div>
+    <div class="scroll-label-r t-mono" id="scroll-pos">0 / 90M</div>
+    <div class="scroll-strip" id="scroll-strip">
+      <img src="assets/murals/chaoyuan_t0.webp" alt="朝元图 第一段" loading="eager">
+      <img src="assets/murals/chaoyuan_t1.webp" alt="朝元图 第二段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t2.webp" alt="朝元图 第三段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t3.webp" alt="朝元图 第四段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t4.webp" alt="朝元图 第五段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t5.webp" alt="朝元图 第六段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t6.webp" alt="朝元图 第七段" loading="lazy">
+    </div>
+    <div class="scroll-progress"><i id="scroll-bar"></i></div>
+  </div>
+</section>
+
+<!-- 四壁画廊 -->
+<section class="gallery">
+  <div class="gallery-head">
+    <div>
+      <p class="sec-eyebrow t-info rise" data-txt="gallery.eyebrow">四壁 · THE WALLS</p>
+      <h2 class="sec-title t-display rise" data-txt="gallery.title">石窟與殿堂</h2>
+    </div>
+    <p class="t-info rise" style="color:var(--ink-soft)" data-txt="gallery.note">點入可觀原壁全幅</p>
+  </div>
+  <div class="gallery-grid" id="gallery-grid"><!-- boot.js 注入 --></div>
+</section>
+
+<!-- 读经引子 -->
+<section class="reading-sec">
+  <div class="reading-bg" style="background-image:url('assets/murals/jingtu_full.webp')"></div>
+  <div class="reading-left">
+    <div>
+      <p class="sec-eyebrow t-info rise" data-txt="reading.eyebrow">讀經 · THE READING ROOM</p>
+      <h2 class="sec-title t-display rise" data-txt="reading.title">藏經閣</h2>
+    </div>
+    <p class="reading-desc rise" data-txt="reading.desc"></p>
+    <a class="reading-cta rise" href="canon.html" data-txt="reading.cta">入 閣</a>
+  </div>
+  <div class="reading-right rise">
+    <span data-txt="reading.featured_quote"></span>
+    <small data-txt="reading.featured_src"></small>
+  </div>
+</section>
+
+<footer class="footer">
+  <span class="t-info" data-txt="site.footer_line"></span>
+  <div class="footer-seal" data-txt="site.footer_seal">無盡藏</div>
+</footer>
+
+<!-- 灯箱 -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightbox-close">閉 CLOSE</button>
+  <div class="lightbox-hint t-mono">DRAG / SCROLL 左右移卷</div>
+  <div class="lightbox-scroll" id="lightbox-scroll"><img id="lightbox-img" src="" alt=""></div>
+  <div class="lightbox-cap">
+    <span class="t-display" id="lightbox-title" style="font-size:var(--t-med)"></span>
+    <span class="t-info" id="lightbox-meta"></span>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/boot.js"></script>
+<script src="js/fluid.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

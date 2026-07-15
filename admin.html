@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>編輯台 · 無盡藏</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#faf9f6; --ink:#17130e; --soft:#6b6459; --line:rgba(23,19,14,.15);
+    --cinnabar:#a63a25; --gold:#b08d46; --ok:#57705f;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:"Noto Serif TC",serif; font-size:15px; line-height:1.8; padding:40px clamp(16px,4vw,60px) 120px; }
+  h1 { font-weight:900; letter-spacing:.15em; font-size:26px; margin-bottom:4px; }
+  h1 em { font-style:normal; color:var(--cinnabar); }
+  .sub { color:var(--soft); font-size:12px; font-family:"IBM Plex Mono",monospace; letter-spacing:.08em; margin-bottom:36px; }
+  section { border:1px solid var(--line); margin-bottom:28px; }
+  section > header { padding:14px 20px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; }
+  section > header h2 { font-size:16px; font-weight:700; letter-spacing:.2em; }
+  section > header .st { font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--soft); }
+  section > .body { padding:20px; display:none; }
+  section.open > .body { display:block; }
+  label { display:block; font-size:11px; font-family:"IBM Plex Mono",monospace; color:var(--soft); letter-spacing:.08em; margin:14px 0 4px; }
+  input[type=text], input[type=password], textarea, select {
+    width:100%; border:1px solid var(--line); background:#fff; padding:9px 12px;
+    font-family:inherit; font-size:14px; color:var(--ink); outline:none;
+  }
+  input:focus, textarea:focus { border-color:var(--ink); }
+  textarea.raw { font-family:"IBM Plex Mono",monospace; font-size:12px; min-height:420px; line-height:1.6; }
+  button {
+    background:none; border:1px solid var(--ink); color:var(--ink);
+    font-family:inherit; font-size:13px; letter-spacing:.15em;
+    padding:10px 22px; cursor:pointer; margin-top:16px;
+  }
+  button:hover { background:var(--ink); color:var(--paper); }
+  button.primary { background:var(--cinnabar); border-color:var(--cinnabar); color:#fff; }
+  button.primary:hover { background:var(--ink); border-color:var(--ink); }
+  button:disabled { opacity:.4; cursor:default; }
+  .statusbar {
+    position:fixed; bottom:0; left:0; right:0; background:var(--ink); color:var(--paper);
+    padding:10px clamp(16px,4vw,60px); font-family:"IBM Plex Mono",monospace; font-size:12px;
+    display:flex; justify-content:space-between; gap:2em;
+  }
+  .statusbar .ok { color:#9fc49f; } .statusbar .err { color:#e0a090; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:0 24px; }
+  .hint { font-size:12px; color:var(--soft); margin-top:8px; }
+  .upl-preview { border:1px dashed var(--line); padding:16px; margin-top:16px; font-size:13px; display:none; }
+  .upl-preview.show { display:block; }
+  .upl-preview b { color:var(--cinnabar); }
+  @media (max-width:700px){ .grid2 { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<h1>無盡藏 <em>·</em> 編輯台</h1>
+<p class="sub">隐藏页面 · 无入口链接 · 改动经 GitHub API 直接提交仓库，Pages 约一分钟后生效</p>
+
+<section class="open" id="sec-conn">
+  <header><h2>一 · 連接</h2><span class="st" id="conn-st">未连接</span></header>
+  <div class="body">
+    <div class="grid2">
+      <div>
+        <label>GITHUB TOKEN（需 repo 读写权限，只存本机 localStorage）</label>
+        <input type="password" id="token" placeholder="ghp_...">
+      </div>
+      <div>
+        <label>仓库</label>
+        <input type="text" id="repo" value="lhjihk/wujinzang">
+      </div>
+    </div>
+    <button class="primary" id="btn-connect">連接</button>
+    <button id="btn-disconnect">斷開</button>
+  </div>
+</section>
+
+<section id="sec-form">
+  <header><h2>二 · 文案與壁畫說明</h2><span class="st">content.json 表单</span></header>
+  <div class="body">
+    <div id="form-fields"><p class="hint">先连接，或直接点「载入」读取线上 content.json。</p></div>
+    <button id="btn-load">載入</button>
+    <button class="primary" id="btn-save-form">保存並發布</button>
+  </div>
+</section>
+
+<section id="sec-upload">
+  <header><h2>三 · 經文上架（EPUB 上傳通道）</h2><span class="st">CBETA epub → 站内可读</span></header>
+  <div class="body">
+    <p class="hint">选择 CBETA 的 .epub（如 Mac 文稿/电子书/大藏 目录下的 J*.epub），浏览器本地解析出正文，确认后提交仓库。一次一部，2.99G 的大藏不必整体搬运——书目已全量上架，全文按需逐部搬入。</p>
+    <label>EPUB 文件</label>
+    <input type="file" id="epub-file" accept=".epub">
+    <div class="upl-preview" id="upl-preview"></div>
+    <button class="primary" id="btn-upload" disabled>上架此經</button>
+  </div>
+</section>
+
+<section id="sec-raw">
+  <header><h2>四 · 原始 JSON（进阶）</h2><span class="st">content.json 全文</span></header>
+  <div class="body">
+    <textarea class="raw" id="raw-json" spellcheck="false"></textarea>
+    <button id="btn-raw-load">載入</button>
+    <button class="primary" id="btn-raw-save">校验并保存</button>
+  </div>
+</section>
+
+<div class="statusbar"><span id="status">就绪</span><span id="status-r"></span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

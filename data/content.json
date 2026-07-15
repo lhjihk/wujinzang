@@ -1,0 +1,105 @@
+{
+  "_version": "1.0.0",
+  "_comment": "全站唯一数据源。改文案/壁画说明/精选经文都在这里，不用碰HTML。编辑台(admin.html)就是给这个文件做表单。",
+  "site": {
+    "name": "無盡藏",
+    "latin": "WUJINZANG",
+    "tagline": "THE INEXHAUSTIBLE TREASURY",
+    "year": "MMXXVI",
+    "nav_home": "梵境",
+    "nav_canon": "藏經閣",
+    "footer_line": "壁畫原件均為公有領域高清掃描 · 經文取自 CBETA 電子佛典 · 私人清修之用",
+    "footer_seal": "無盡藏"
+  },
+  "hero": {
+    "title": "無盡藏",
+    "sub": "佛典壁畫 · 在線讀經",
+    "en_line1": "MURALS OF YONGLE PALACE · MOGAO GROTTOES · GYANTSE KUMBUM",
+    "en_line2": "SCRIPTURE READING ROOM — EST. MMXXVI",
+    "quote": "應無所住，而生其心",
+    "quote_src": "金剛般若波羅蜜經"
+  },
+  "scroll_section": {
+    "eyebrow": "展卷 · UNROLLING",
+    "title": "朝元圖",
+    "location": "山西永樂宮 三清殿",
+    "period": "元 · 泰定二年（1325）",
+    "artist": "馬君祥 及其門人 繪",
+    "en": "HOMAGE TO THE PRIMORDIAL — YONGLE PALACE, SHANXI",
+    "desc": "高四米四，長逾九十米，二百八十六位神祇朝謁元始。這是現存規模最大的中國古代壁畫之一，此處呈現的是原壁完整高清掃描，隨指尖徐徐展開。"
+  },
+  "gallery": {
+    "eyebrow": "四壁 · THE WALLS",
+    "title": "石窟與殿堂",
+    "note": "點入可觀原壁全幅",
+    "works": [
+      {
+        "id": "deer",
+        "title": "鹿王本生圖",
+        "location": "敦煌莫高窟 第257窟",
+        "period": "北魏（386–534）",
+        "en": "THE DEER KING JATAKA · MOGAO CAVE 257",
+        "desc": "九色鹿捨身救溺人，反遭出賣。橫卷式連環敘事自兩端向中央推進，是莫高窟最負盛名的本生故事畫。",
+        "card": "assets/murals/deer_detail.webp",
+        "full": "assets/murals/deer_full.webp",
+        "wide": true
+      },
+      {
+        "id": "jingtu",
+        "title": "西方淨土變",
+        "location": "敦煌莫高窟 第217窟",
+        "period": "盛唐（約707–710）",
+        "en": "WESTERN PURE LAND · MOGAO CAVE 217",
+        "desc": "阿彌陀佛端坐蓮台，樓閣涌於虛空，水榭迴廊間伎樂天人環繞——盛唐氣象在此鋪滿一壁。",
+        "card": "assets/murals/jingtu_detail.webp",
+        "full": "assets/murals/jingtu_full.webp",
+        "wide": false
+      },
+      {
+        "id": "qiangdao",
+        "title": "五百強盜成佛圖",
+        "location": "敦煌莫高窟 第285窟",
+        "period": "西魏（535–557）",
+        "en": "FIVE HUNDRED ROBBERS ATTAIN BUDDHAHOOD · MOGAO CAVE 285",
+        "desc": "官兵激戰、刖目流放、聞法出家、山林禪修——一鋪壁畫講盡由惡入善的全程，西魏線描的巔峰。",
+        "card": "assets/murals/qiangdao_detail.webp",
+        "full": "assets/murals/qiangdao_full.webp",
+        "wide": true
+      },
+      {
+        "id": "kumbum",
+        "title": "吉祥多門塔壁畫",
+        "location": "西藏江孜 白居寺",
+        "period": "十五世紀前半",
+        "en": "MURAL OF THE KUMBUM · PALCHO MONASTERY, GYANTSE",
+        "desc": "十萬佛塔內殿一鋪，主尊赤身怒相，寶冠瓔珞悉以立粉貼金。白居寺壁畫被視為藏傳佛教壁畫藝術的巔峰。",
+        "card": "assets/murals/kumbum_detail.webp",
+        "full": "assets/murals/kumbum_full.webp",
+        "wide": false
+      }
+    ]
+  },
+  "reading": {
+    "eyebrow": "讀經 · THE READING ROOM",
+    "title": "藏經閣",
+    "desc": "《嘉興藏》全目二百八十五部已上架。竪排烏絲欄、墨水屏紙感、三種讀經界面。",
+    "cta": "入 閣",
+    "featured_quote": "觀自在菩薩，行深般若波羅蜜多時，照見五蘊皆空，度一切苦厄。",
+    "featured_src": "般若波羅蜜多心經 · 唐三藏法師玄奘譯"
+  },
+  "canon_page": {
+    "title": "藏經閣",
+    "sub": "大藏《嘉興藏》· 徑山藏",
+    "en": "THE JIAXING CANON — 285 WORKS",
+    "intro": "明萬曆至清康熙間，刻於徑山、流通於嘉興楞嚴寺的方冊大藏。此處全目上架，可讀之典陸續增補。",
+    "featured_label": "今日可讀",
+    "featured": ["T0251", "T0235"],
+    "featured_note": "《心經》《金剛經》先行上架，餘者以編輯台陸續搬入。",
+    "search_placeholder": "檢索書名、著者、編號…",
+    "locked_note": "此典尚未上架全文，可於編輯台上傳 EPUB 搬入。"
+  },
+  "reader": {
+    "themes": ["紙", "夜", "墨水屏"],
+    "modes": ["竪排", "橫排"]
+  }
+}

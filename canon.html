@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<title>藏經閣 · 無盡藏</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Oswald:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/canon.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><span data-txt="site.name">無盡藏</span><em>。</em></a>
+  <div class="nav-links t-info">
+    <a href="index.html" data-txt="site.nav_home">梵境</a>
+    <a href="canon.html" class="active" data-txt="site.nav_canon">藏經閣</a>
+  </div>
+</nav>
+
+<header class="canon-head">
+  <div>
+    <p class="sec-eyebrow t-info rise" data-txt="canon_page.en">THE JIAXING CANON — 285 WORKS</p>
+    <h1 class="sec-title t-display rise" data-txt="canon_page.title">藏經閣</h1>
+    <p class="sub t-info rise" data-txt="canon_page.sub">大藏《嘉興藏》· 徑山藏</p>
+  </div>
+  <p class="canon-intro rise" data-txt="canon_page.intro"></p>
+</header>
+
+<div class="canon-search rise">
+  <input id="search" type="search" autocomplete="off">
+  <span class="canon-count t-mono" id="count">285</span>
+</div>
+
+<section>
+  <div class="shelf-label">
+    <span class="t-info" style="color:var(--cinnabar)" data-txt="canon_page.featured_label">今日可讀</span>
+    <span class="t-info" style="color:var(--ink-soft)" data-txt="canon_page.featured_note"></span>
+  </div>
+  <div class="featured-row" id="featured-row"><!-- canon.js 注入 --></div>
+</section>
+
+<section>
+  <div class="shelf-label">
+    <span class="t-info" style="color:var(--ink-soft)">全目 · COMPLETE CATALOGUE</span>
+    <span class="t-info" style="color:var(--ink-soft)">明萬曆 — 清康熙 · 徑山刻藏</span>
+  </div>
+  <div class="shelf" id="shelf"><!-- canon.js 注入 --></div>
+</section>
+
+<footer class="footer">
+  <span class="t-info" data-txt="site.footer_line"></span>
+  <div class="footer-seal" data-txt="site.footer_seal">無盡藏</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- 阅读器 -->
+<div class="reader" id="reader" role="dialog" aria-modal="true">
+  <div class="reader-flash" id="reader-flash"></div>
+  <div class="reader-top">
+    <div>
+      <span class="rt-title" id="r-title"></span>
+      <span class="rt-creator" id="r-creator"></span>
+    </div>
+    <div class="group" style="display:flex;gap:.5em">
+      <select class="reader-btn" id="r-juan" title="卷"></select>
+      <button class="reader-btn seal" id="r-close">閉卷</button>
+    </div>
+  </div>
+  <div class="reader-main">
+    <div class="reader-page">
+      <div class="flip-zone prev" id="flip-prev" title="上一頁"></div>
+      <div class="flip-zone next" id="flip-next" title="下一頁"></div>
+      <div class="reader-flow-clip" id="r-clip">
+        <div class="reader-flow" id="r-flow"></div>
+      </div>
+    </div>
+  </div>
+  <div class="reader-bottom">
+    <div class="group">
+      <button class="reader-btn" id="r-theme-paper">紙</button>
+      <button class="reader-btn" id="r-theme-night">夜</button>
+      <button class="reader-btn" id="r-theme-eink">墨水屏</button>
+    </div>
+    <span class="reader-pageno" id="r-pageno">一 / 一</span>
+    <div class="group">
+      <button class="reader-btn" id="r-mode">橫排</button>
+      <button class="reader-btn" id="r-fs-minus">字－</button>
+      <button class="reader-btn" id="r-fs-plus">字＋</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/boot.js"></script>
+<script src="js/canon.js"></script>
+</body>
+</html>
