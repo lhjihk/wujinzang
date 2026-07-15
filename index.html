@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
-<title>無盡藏 · WUJINZANG</title>
+<meta name="robots" content="noindex,nofollow">
+<title>心燈文錄 · XINDENG WENLU</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Oswald:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -13,7 +14,7 @@
 </head>
 <body class="no-scroll">
 
-<!-- 加载器：汉字计数 + 朱印落章 -->
+<!-- 加載器：漢字計數 + 朱印落章 -->
 <div class="loader" id="loader">
   <div class="loader-num" id="loader-num">零</div>
   <div class="loader-seal" id="loader-seal" data-txt="site.footer_seal">無盡藏</div>
@@ -21,7 +22,7 @@
 </div>
 
 <nav class="nav">
-  <a class="nav-logo" href="index.html"><span data-txt="site.name">無盡藏</span><em>。</em></a>
+  <a class="nav-logo" href="index.html"><span data-txt="site.name">心燈文錄</span><em>。</em></a>
   <div class="nav-links t-info">
     <a href="index.html" class="active" data-txt="site.nav_home">梵境</a>
     <a href="canon.html" data-txt="site.nav_canon">藏經閣</a>
@@ -30,6 +31,7 @@
 
 <!-- HERO -->
 <header class="hero">
+  <canvas id="mandala-canvas"></canvas>
   <canvas id="fluid-canvas"></canvas>
   <div class="hero-inner">
     <h1 class="hero-title t-display" id="hero-title" data-split="hero.title">無盡藏</h1>
@@ -45,12 +47,12 @@
   <div class="hero-hint t-mono rise">SCROLL ▼ 徐徐展卷</div>
 </header>
 
-<!-- 经文跑马灯 -->
+<!-- 經文跑馬燈 -->
 <div class="marquee" id="marquee">
   <div class="marquee-track" id="marquee-track"></div>
 </div>
 
-<!-- 展卷：朝元图 -->
+<!-- 展卷：朝元圖 -->
 <section class="scroll-sec" id="scroll-sec">
   <div class="scroll-head">
     <div>
@@ -67,19 +69,19 @@
     <div class="scroll-label t-info">朝元圖 · 原壁高清掃描 28379 × 1805 PX</div>
     <div class="scroll-label-r t-mono" id="scroll-pos">0 / 90M</div>
     <div class="scroll-strip" id="scroll-strip">
-      <img src="assets/murals/chaoyuan_t0.webp" alt="朝元图 第一段" loading="eager">
-      <img src="assets/murals/chaoyuan_t1.webp" alt="朝元图 第二段" loading="lazy">
-      <img src="assets/murals/chaoyuan_t2.webp" alt="朝元图 第三段" loading="lazy">
-      <img src="assets/murals/chaoyuan_t3.webp" alt="朝元图 第四段" loading="lazy">
-      <img src="assets/murals/chaoyuan_t4.webp" alt="朝元图 第五段" loading="lazy">
-      <img src="assets/murals/chaoyuan_t5.webp" alt="朝元图 第六段" loading="lazy">
-      <img src="assets/murals/chaoyuan_t6.webp" alt="朝元图 第七段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t0.webp" alt="朝元圖 第一段" loading="eager">
+      <img src="assets/murals/chaoyuan_t1.webp" alt="朝元圖 第二段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t2.webp" alt="朝元圖 第三段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t3.webp" alt="朝元圖 第四段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t4.webp" alt="朝元圖 第五段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t5.webp" alt="朝元圖 第六段" loading="lazy">
+      <img src="assets/murals/chaoyuan_t6.webp" alt="朝元圖 第七段" loading="lazy">
     </div>
     <div class="scroll-progress"><i id="scroll-bar"></i></div>
   </div>
 </section>
 
-<!-- 四壁画廊 -->
+<!-- 四壁畫廊 -->
 <section class="gallery">
   <div class="gallery-head">
     <div>
@@ -91,7 +93,7 @@
   <div class="gallery-grid" id="gallery-grid"><!-- boot.js 注入 --></div>
 </section>
 
-<!-- 读经引子 -->
+<!-- 讀經引子 -->
 <section class="reading-sec">
   <div class="reading-bg" style="background-image:url('assets/murals/jingtu_full.webp')"></div>
   <div class="reading-left">
@@ -108,12 +110,45 @@
   </div>
 </section>
 
+<!-- 同源：別院與頻道 -->
+<section class="links-sec">
+  <div>
+    <p class="sec-eyebrow t-info rise" data-txt="links_section.eyebrow">同源 · FROM THE SAME HAND</p>
+    <h2 class="sec-title t-display rise" data-txt="links_section.title">一手所植</h2>
+  </div>
+  <div class="links-row">
+    <a class="link-card rise" data-href="site.yt_url" href="#" target="_blank" rel="noopener">
+      <span class="t-info lc-label" data-txt="site.yt_label">頻道</span>
+      <span class="lc-name" data-txt="site.yt_name">ZEN — 21MUS</span>
+      <span class="lc-desc" data-txt="links_section.yt_desc"></span>
+      <span class="t-info lc-go"><span data-txt="site.yt_note">法音流佈 · YOUTUBE</span> ↗</span>
+    </a>
+    <a class="link-card rise" data-href="site.annex_url" href="#" target="_blank" rel="noopener">
+      <span class="t-info lc-label" data-txt="site.annex_label">別院</span>
+      <span class="lc-name" data-txt="site.annex_name">踏破腐朽</span>
+      <span class="lc-desc" data-txt="links_section.annex_desc"></span>
+      <span class="t-info lc-go"><span data-txt="site.annex_note">同一手植，另一重天地</span> ↗</span>
+    </a>
+  </div>
+</section>
+
 <footer class="footer">
   <span class="t-info" data-txt="site.footer_line"></span>
+  <a class="annex" data-href="site.yt_url" href="#" target="_blank" rel="noopener">
+    <span class="t-info annex-label" data-txt="site.yt_label">頻道</span>
+    <span class="annex-name" data-txt="site.yt_name">ZEN — 21MUS</span>
+    <span class="annex-mark">↗</span>
+  </a>
+  <a class="annex" data-href="site.annex_url" href="#" target="_blank" rel="noopener">
+    <span class="t-info annex-label" data-txt="site.annex_label">別院</span>
+    <span class="annex-name" data-txt="site.annex_name">踏破腐朽</span>
+    <span class="annex-mark">↗</span>
+  </a>
   <div class="footer-seal" data-txt="site.footer_seal">無盡藏</div>
 </footer>
+<div class="founded-line"><span class="t-info" data-txt="site.founded"></span><span class="t-mono" data-txt="site.founded_en"></span></div>
 
-<!-- 灯箱 -->
+<!-- 燈箱 -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
   <button class="lightbox-close" id="lightbox-close">閉 CLOSE</button>
   <div class="lightbox-hint t-mono">DRAG / SCROLL 左右移卷</div>
@@ -129,6 +164,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/boot.js"></script>
 <script src="js/fluid.js"></script>
+<script src="js/mandala.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

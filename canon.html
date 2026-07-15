@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
-<title>藏經閣 · 無盡藏</title>
+<meta name="robots" content="noindex,nofollow">
+<title>藏經閣 · 心燈文錄</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Oswald:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -15,7 +16,7 @@
 <body>
 
 <nav class="nav">
-  <a class="nav-logo" href="index.html"><span data-txt="site.name">無盡藏</span><em>。</em></a>
+  <a class="nav-logo" href="index.html"><span data-txt="site.name">心燈文錄</span><em>。</em></a>
   <div class="nav-links t-info">
     <a href="index.html" data-txt="site.nav_home">梵境</a>
     <a href="canon.html" class="active" data-txt="site.nav_canon">藏經閣</a>
@@ -28,13 +29,26 @@
     <h1 class="sec-title t-display rise" data-txt="canon_page.title">藏經閣</h1>
     <p class="sub t-info rise" data-txt="canon_page.sub">大藏《嘉興藏》· 徑山藏</p>
   </div>
-  <p class="canon-intro rise" data-txt="canon_page.intro"></p>
+  <div class="canon-head-right rise">
+    <p class="canon-intro" data-txt="canon_page.intro"></p>
+    <button class="study-btn" id="study-btn">
+      <span class="t-info" style="color:var(--gold)">MY STUDY</span>
+      <span class="study-btn-zh" id="study-btn-zh">入館 · 書齋</span>
+    </button>
+  </div>
 </header>
+
+<!-- 會員輕提示（含蓄的入館引導） -->
+<p class="study-hint t-info" id="study-hint">
+  入館登記後可收藏經書、存書籤，換一臺設備仍接著讀 · <span style="color:var(--gold)">SIGN IN TO KEEP YOUR STUDY ACROSS DEVICES</span>
+</p>
 
 <div class="canon-search rise">
   <input id="search" type="search" autocomplete="off">
   <span class="canon-count t-mono" id="count">285</span>
 </div>
+
+<p class="canon-heritage"><span data-txt="canon_page.heritage"></span><br><span class="t-info" style="color:var(--ink-soft)" data-txt="canon_page.heritage_en"></span></p>
 
 <section>
   <div class="shelf-label">
@@ -44,22 +58,75 @@
   <div class="featured-row" id="featured-row"><!-- canon.js 注入 --></div>
 </section>
 
-<section>
+<!-- 檢索結果（有關鍵詞時替代下方諸藏） -->
+<section id="search-sec" style="display:none">
   <div class="shelf-label">
-    <span class="t-info" style="color:var(--ink-soft)">全目 · COMPLETE CATALOGUE</span>
-    <span class="t-info" style="color:var(--ink-soft)">明萬曆 — 清康熙 · 徑山刻藏</span>
+    <span class="t-info" style="color:var(--cinnabar)"><span data-txt="canon_page.search_hint">檢索結果</span> · <span id="search-count"></span></span>
+    <span class="t-info" style="color:var(--ink-soft)" id="search-more"></span>
   </div>
-  <div class="shelf" id="shelf"><!-- canon.js 注入 --></div>
+  <div class="shelf" id="search-shelf"></div>
 </section>
+
+<!-- 藏經櫃：二十四藏一目瞭然 -->
+<section id="cabinet-sec">
+  <div class="shelf-label">
+    <span class="t-info" style="color:var(--ink-soft)" data-txt="canon_page.shelf_label">諸藏列函 · THE COLLECTIONS</span>
+    <span class="t-info" style="color:var(--ink-soft)" id="cabinet-total"></span>
+  </div>
+  <div class="cabinet" id="cabinet"><!-- canon.js 注入櫃門 --></div>
+</section>
+
+<!-- 各藏分函書架 -->
+<div id="canon-sections"><!-- canon.js 注入 --></div>
 
 <footer class="footer">
   <span class="t-info" data-txt="site.footer_line"></span>
+  <a class="annex" data-href="site.yt_url" href="#" target="_blank" rel="noopener">
+    <span class="t-info annex-label" data-txt="site.yt_label">頻道</span>
+    <span class="annex-name" data-txt="site.yt_name">ZEN — 21MUS</span>
+    <span class="annex-mark">↗</span>
+  </a>
+  <a class="annex" data-href="site.annex_url" href="#" target="_blank" rel="noopener">
+    <span class="t-info annex-label" data-txt="site.annex_label">別院</span>
+    <span class="annex-name" data-txt="site.annex_name">踏破腐朽</span>
+    <span class="annex-mark">↗</span>
+  </a>
   <div class="footer-seal" data-txt="site.footer_seal">無盡藏</div>
 </footer>
+<div class="founded-line"><span class="t-info" data-txt="site.founded"></span><span class="t-mono" data-txt="site.founded_en"></span></div>
 
 <div class="toast" id="toast"></div>
 
-<!-- 阅读器 -->
+<!-- 入館（郵箱驗證登入） -->
+<div class="study-modal" id="study-modal" role="dialog" aria-modal="true">
+  <div class="study-card">
+    <button class="study-close" id="study-close">閉</button>
+    <div id="study-login">
+      <p class="t-info" style="color:var(--cinnabar)">入館登記 · SIGN IN</p>
+      <h3 class="study-title">書齋</h3>
+      <p class="study-note">以郵箱領取六位入館碼，無需密碼與手機號。收藏與書籤自此隨身。<br><span class="t-info" style="color:var(--ink-soft)">A SIX-DIGIT CODE WILL BE SENT TO YOUR EMAIL. NO PASSWORD, NO PHONE.</span></p>
+      <label class="t-info" style="color:var(--ink-soft)">EMAIL 郵箱（國內外皆可）</label>
+      <input type="email" id="study-email" placeholder="you@example.com" autocomplete="email">
+      <div id="turnstile-box"></div>
+      <button class="study-go" id="study-send">領取入館碼 · SEND CODE</button>
+      <div id="study-code-row" style="display:none">
+        <label class="t-info" style="color:var(--ink-soft)">入館碼 CODE</label>
+        <input type="text" id="study-code" inputmode="numeric" maxlength="6" placeholder="○○○○○○">
+        <button class="study-go" id="study-verify">入 館 · ENTER</button>
+      </div>
+      <p class="study-status t-mono" id="study-status"></p>
+    </div>
+    <div id="study-panel" style="display:none">
+      <p class="t-info" style="color:var(--cinnabar)">吾之書齋 · MY STUDY</p>
+      <h3 class="study-title" id="study-who"></h3>
+      <div class="study-sec"><p class="t-info">書籤 · BOOKMARKS</p><div id="study-bookmarks"></div></div>
+      <div class="study-sec"><p class="t-info">收藏 · FAVORITES</p><div id="study-favs"></div></div>
+      <button class="study-go ghost" id="study-logout">離館 · SIGN OUT</button>
+    </div>
+  </div>
+</div>
+
+<!-- 閱讀器 -->
 <div class="reader" id="reader" role="dialog" aria-modal="true">
   <div class="reader-flash" id="reader-flash"></div>
   <div class="reader-top">
@@ -68,10 +135,13 @@
       <span class="rt-creator" id="r-creator"></span>
     </div>
     <div class="group" style="display:flex;gap:.5em">
+      <button class="reader-btn" id="r-fav" title="收藏此經">收藏</button>
+      <button class="reader-btn" id="r-bookmark" title="存書籤，下次接著讀">書籤</button>
       <select class="reader-btn" id="r-juan" title="卷"></select>
       <button class="reader-btn seal" id="r-close">閉卷</button>
     </div>
   </div>
+  <div class="reader-hint t-info" id="reader-hint"></div>
   <div class="reader-main">
     <div class="reader-page">
       <div class="flip-zone prev" id="flip-prev" title="上一頁"></div>
@@ -89,6 +159,7 @@
     </div>
     <span class="reader-pageno" id="r-pageno">一 / 一</span>
     <div class="group">
+      <button class="reader-btn" id="r-font">楷體</button>
       <button class="reader-btn" id="r-mode">橫排</button>
       <button class="reader-btn" id="r-fs-minus">字－</button>
       <button class="reader-btn" id="r-fs-plus">字＋</button>
@@ -97,6 +168,7 @@
 </div>
 
 <script src="js/boot.js"></script>
+<script src="js/member.js"></script>
 <script src="js/canon.js"></script>
 </body>
 </html>

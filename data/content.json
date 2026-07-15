@@ -1,20 +1,30 @@
 {
-  "_version": "1.0.0",
-  "_comment": "全站唯一数据源。改文案/壁画说明/精选经文都在这里，不用碰HTML。编辑台(admin.html)就是给这个文件做表单。",
+  "_version": "2.0.0",
+  "_comment": "全站唯一數據源。改文案/壁畫說明/精選經文都在這裡，不用碰HTML。編輯臺(admin.html)就是給這個文件做表單。",
   "site": {
-    "name": "無盡藏",
-    "latin": "WUJINZANG",
-    "tagline": "THE INEXHAUSTIBLE TREASURY",
+    "name": "心燈文錄",
+    "latin": "XINDENG WENLU",
+    "tagline": "RECORDS OF THE HEART-LAMP",
     "year": "MMXXVI",
     "nav_home": "梵境",
     "nav_canon": "藏經閣",
-    "footer_line": "壁畫原件均為公有領域高清掃描 · 經文取自 CBETA 電子佛典 · 私人清修之用",
-    "footer_seal": "無盡藏"
+    "footer_line": "畫作原件均為公有領域博物館級掃描 · 經文取自 CBETA 電子佛典 · 私人清修之用",
+    "footer_seal": "無盡藏",
+    "annex_label": "別院",
+    "annex_name": "踏破腐朽",
+    "annex_url": "https://lhjihk.github.io/bilibili-site/",
+    "annex_note": "同一手植，另一重天地",
+    "founded": "本站創建於四川省峨眉山 · 西元二〇二六年七月十五日",
+    "founded_en": "FOUNDED AT MOUNT EMEI, SICHUAN — JULY 15, MMXXVI",
+    "yt_label": "頻道",
+    "yt_name": "ZEN — 21MUS",
+    "yt_url": "https://www.youtube.com/@zen-21mus",
+    "yt_note": "法音流佈 · YOUTUBE"
   },
   "hero": {
-    "title": "無盡藏",
+    "title": "心燈文錄",
     "sub": "佛典壁畫 · 在線讀經",
-    "en_line1": "MURALS OF YONGLE PALACE · MOGAO GROTTOES · GYANTSE KUMBUM",
+    "en_line1": "MURALS OF YONGLE PALACE · MOGAO GROTTOES · TIBETAN THANGKA",
     "en_line2": "SCRIPTURE READING ROOM — EST. MMXXVI",
     "quote": "應無所住，而生其心",
     "quote_src": "金剛般若波羅蜜經"
@@ -32,6 +42,7 @@
     "eyebrow": "四壁 · THE WALLS",
     "title": "石窟與殿堂",
     "note": "點入可觀原壁全幅",
+    "deco_verse": "一花一世界　一葉一如來",
     "works": [
       {
         "id": "deer",
@@ -50,7 +61,7 @@
         "location": "敦煌莫高窟 第217窟",
         "period": "盛唐（約707–710）",
         "en": "WESTERN PURE LAND · MOGAO CAVE 217",
-        "desc": "阿彌陀佛端坐蓮台，樓閣涌於虛空，水榭迴廊間伎樂天人環繞——盛唐氣象在此鋪滿一壁。",
+        "desc": "阿彌陀佛端坐蓮臺，樓閣湧於虛空，水榭迴廊間伎樂天人環繞——盛唐氣象在此鋪滿一壁。",
         "card": "assets/murals/jingtu_detail.webp",
         "full": "assets/murals/jingtu_full.webp",
         "wide": false
@@ -67,39 +78,67 @@
         "wide": true
       },
       {
-        "id": "kumbum",
-        "title": "吉祥多門塔壁畫",
-        "location": "西藏江孜 白居寺",
-        "period": "十五世紀前半",
-        "en": "MURAL OF THE KUMBUM · PALCHO MONASTERY, GYANTSE",
-        "desc": "十萬佛塔內殿一鋪，主尊赤身怒相，寶冠瓔珞悉以立粉貼金。白居寺壁畫被視為藏傳佛教壁畫藝術的巔峰。",
-        "card": "assets/murals/kumbum_detail.webp",
-        "full": "assets/murals/kumbum_full.webp",
-        "wide": false
+        "id": "tara",
+        "title": "綠度母",
+        "location": "西藏 薩迦寺傳承 · 克利夫蘭美術館藏",
+        "period": "約1260年代",
+        "en": "GREEN TARA · TIBET, CA. 1260S — CLEVELAND MUSEUM OF ART",
+        "desc": "現存早期唐卡的無上名品，或出自尼瓦爾大師之手。度母右足踏蓮而下，聞聲救度；礦彩歷七百年而寶相莊嚴如初。",
+        "card": "assets/murals/tara_detail.webp",
+        "full": "assets/murals/tara_full.webp",
+        "wide": false,
+        "colophon_title": "題記",
+        "colophon": "度母者，觀音悲淚所化。緣起性空，救八難於當下。此軸絹本礦彩，七百年而色不衰，石青石綠泥金皆如初敷。",
+        "colophon_verse": "眾生度盡　方證菩提"
       }
     ]
   },
   "reading": {
     "eyebrow": "讀經 · THE READING ROOM",
     "title": "藏經閣",
-    "desc": "《嘉興藏》全目二百八十五部已上架。竪排烏絲欄、墨水屏紙感、三種讀經界面。",
+    "desc": "漢文大藏二十四藏、四千七百八十七部全文上架。竪排烏絲欄、墨水屏紙感、三種讀經界面。",
     "cta": "入 閣",
     "featured_quote": "觀自在菩薩，行深般若波羅蜜多時，照見五蘊皆空，度一切苦厄。",
     "featured_src": "般若波羅蜜多心經 · 唐三藏法師玄奘譯"
   },
   "canon_page": {
     "title": "藏經閣",
-    "sub": "大藏《嘉興藏》· 徑山藏",
-    "en": "THE JIAXING CANON — 285 WORKS",
-    "intro": "明萬曆至清康熙間，刻於徑山、流通於嘉興楞嚴寺的方冊大藏。此處全目上架，可讀之典陸續增補。",
+    "sub": "漢文大藏經 · 二十四藏 · 四千七百八十七部",
+    "en": "THE COMPLETE CHINESE BUDDHIST CANON — 24 COLLECTIONS · 4787 WORKS",
+    "intro": "自趙城金藏至嘉興方冊，自高麗雕版至大正新脩——二十四藏全文在此一閣。依藏分函，各歸其位；一函一世界。",
     "featured_label": "今日可讀",
-    "featured": ["T0251", "T0235"],
-    "featured_note": "《心經》《金剛經》先行上架，餘者以編輯台陸續搬入。",
-    "search_placeholder": "檢索書名、著者、編號…",
-    "locked_note": "此典尚未上架全文，可於編輯台上傳 EPUB 搬入。"
+    "featured": [
+      "T0251",
+      "T0235"
+    ],
+    "featured_note": "《心經》《金剛經》常置案頭，餘者入函細尋。",
+    "search_placeholder": "檢索四千七百八十七部：書名、著者、編號…",
+    "shelf_label": "諸藏列函 · THE COLLECTIONS",
+    "search_hint": "檢索結果",
+    "locked_note": "此典全文缺失，可於編輯臺重新上傳",
+    "heritage": "閣中經文悉依 CBETA 電子佛典錄入，原版原繁體，一字未經簡化與刪改；插圖版畫悉數保留。諸藏各附源流，供識其寶貴。",
+    "heritage_en": "ALL TEXTS IN ORIGINAL TRADITIONAL CHINESE, UNSIMPLIFIED AND UNABRIDGED, FROM THE CBETA CORPUS."
   },
   "reader": {
-    "themes": ["紙", "夜", "墨水屏"],
-    "modes": ["竪排", "橫排"]
+    "themes": [
+      "紙",
+      "夜",
+      "墨水屏"
+    ],
+    "modes": [
+      "竪排",
+      "橫排"
+    ],
+    "flip_hint": "點左右兩緣翻頁 · 亦可用 ← → 鍵"
+  },
+  "auth": {
+    "_comment": "書齋會員後端配置：Turnstile人機驗證的site key，配好Cloudflare後填入即生效；留空則不顯示驗證組件",
+    "turnstile_sitekey": ""
+  },
+  "links_section": {
+    "eyebrow": "同源 · FROM THE SAME HAND",
+    "title": "一手所植",
+    "annex_desc": "主人的另一重天地：影像、聲音與行旅。",
+    "yt_desc": "本站體系的頻道：禪與樂，法音流佈。"
   }
 }

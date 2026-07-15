@@ -1,9 +1,9 @@
 /* ============================================================
-   藏經閣 · 书架与阅读器
-   书架＝方册藏经的书脊墙；阅读器＝竖排乌丝栏 + 三种纸感主题
+   藏經閣 · 書架與閱讀器
+   書架＝方冊藏經的書脊牆；閱讀器＝豎排烏絲欄 + 三種紙感主題
    ============================================================ */
 
-/* ---------- 页头 ---------- */
+/* ---------- 頁頭 ---------- */
 .canon-head {
   padding: calc(var(--pad) * 4) var(--pad) calc(var(--pad) * 1.2);
   display: grid; grid-template-columns: 1fr auto; gap: 2em; align-items: end;
@@ -23,7 +23,7 @@
 .canon-search input::placeholder { color: rgba(23, 19, 14, .3); }
 .canon-count { color: var(--ink-soft); white-space: nowrap; }
 
-/* ---------- 今日可读 ---------- */
+/* ---------- 今日可讀 ---------- */
 .featured-row {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--pad);
@@ -54,7 +54,7 @@
 }
 .featured-note { padding: 0 var(--pad) calc(var(--pad) * 2); color: var(--ink-soft); }
 
-/* ---------- 书脊墙 ---------- */
+/* ---------- 書脊牆 ---------- */
 .shelf-label { padding: 0 var(--pad) 1em; display: flex; justify-content: space-between; align-items: baseline; }
 .shelf {
   display: grid;
@@ -88,7 +88,186 @@
   font-family: var(--f-body);
 }
 
-/* ---------- 提示浮层 ---------- */
+/* ---------- 藏經櫃（二十四藏櫃門）---------- */
+.cabinet {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 12px;
+  padding: 0 var(--pad) calc(var(--pad) * 2.5);
+}
+.cab {
+  position: relative;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  min-height: 215px;
+  padding: 16px 10px 12px;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  cursor: pointer;
+  transition: background .5s var(--ease-brush), color .5s var(--ease-brush), transform .5s var(--ease-brush);
+}
+.cab:hover { background: var(--ink); color: var(--paper); transform: translateY(-5px); }
+.cab:hover .cab-count { color: var(--gold); }
+.cab-han {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .15em;
+  color: var(--cinnabar);
+}
+.cab:hover .cab-han { color: var(--gold); }
+.cab-name {
+  writing-mode: vertical-rl;
+  font-family: var(--f-display); font-weight: 900;
+  font-size: 17px; letter-spacing: .18em; line-height: 1.3;
+  max-height: 130px;
+}
+.cab-count { font-family: var(--f-mono); font-size: 9.5px; color: var(--ink-soft); letter-spacing: .1em; transition: color .5s; }
+
+/* ---------- 各藏分函 ---------- */
+.canon-sec { border-top: 1px solid var(--hairline); }
+.canon-sec > header {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 2em;
+  padding: 1.6em var(--pad);
+  cursor: pointer; user-select: none;
+}
+.canon-sec > header:hover .cs-name { color: var(--cinnabar); }
+.cs-left { display: flex; align-items: baseline; gap: 1.6em; }
+.cs-han { font-family: var(--f-mono); font-size: var(--t-info); color: var(--cinnabar); letter-spacing: .12em; }
+.cs-name {
+  font-family: var(--f-display); font-weight: 900;
+  font-size: max(20px, calc(34 / var(--bsw) * 100vw));
+  letter-spacing: .12em;
+  transition: color .4s;
+}
+.cs-meta { color: var(--ink-soft); }
+.cs-toggle {
+  font-family: var(--f-display); font-weight: 900;
+  font-size: max(18px, calc(26 / var(--bsw) * 100vw));
+  color: var(--ink-soft);
+  transition: transform .5s var(--ease-brush);
+}
+.canon-sec.open .cs-toggle { transform: rotate(45deg); color: var(--cinnabar); }
+.canon-sec .shelf { display: none; }
+.canon-sec.open .shelf { display: grid; }
+.shelf-sentinel { grid-column: 1 / -1; height: 2px; }
+
+/* ---------- 藏簡介 ---------- */
+.cs-desc { padding: 0 var(--pad) 1.4em; max-width: 46em; }
+.cs-desc .zh { font-family: var(--f-display); color: var(--ink-soft); line-height: 2; font-size: max(13px, calc(15 / var(--bsw) * 100vw)); }
+.cs-desc .t-info { color: rgba(23, 19, 14, .38); margin-top: .5em; }
+.canon-sec .cs-desc { display: none; }
+.canon-sec.open .cs-desc { display: block; }
+
+/* ---------- 書齋（會員）---------- */
+.canon-head-right { display: flex; flex-direction: column; align-items: flex-end; gap: 1.6em; }
+.study-btn {
+  background: none; border: 1px solid var(--ink); color: var(--ink);
+  padding: .8em 1.6em; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: .3em;
+  font-family: var(--f-display);
+  transition: background .5s var(--ease-brush), color .5s var(--ease-brush);
+}
+.study-btn:hover { background: var(--ink); color: var(--paper); }
+.study-btn-zh { font-weight: 700; letter-spacing: .25em; font-size: max(14px, calc(17 / var(--bsw) * 100vw)); }
+.study-hint {
+  margin: 0 var(--pad) 2em; padding-top: 1em;
+  border-top: 1px solid var(--hairline);
+  color: var(--ink-soft); cursor: pointer;
+}
+.study-hint:hover { color: var(--ink); }
+
+.study-modal {
+  position: fixed; inset: 0; z-index: 1300;
+  background: rgba(23, 19, 14, .5);
+  display: none; align-items: center; justify-content: center;
+  padding: 4vh 4vw;
+}
+.study-modal.open { display: flex; }
+.study-card {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  box-shadow: 8px 8px 0 rgba(23, 19, 14, .18);
+  width: min(460px, 94vw); max-height: 88vh; overflow-y: auto;
+  padding: 2.6em 2.4em;
+}
+.study-close {
+  position: absolute; top: 1em; right: 1em;
+  background: none; border: 1px solid var(--hairline);
+  font-family: var(--f-display); font-size: 13px;
+  width: 2.2em; height: 2.2em; cursor: pointer; color: var(--ink-soft);
+}
+.study-close:hover { border-color: var(--ink); color: var(--ink); }
+.study-title { font-family: var(--f-display); font-weight: 900; font-size: 30px; letter-spacing: .2em; margin: .3em 0 .6em; }
+.study-note { font-size: 13.5px; line-height: 2; color: var(--ink-soft); margin-bottom: 1.6em; }
+.study-card label { display: block; margin: 1.2em 0 .4em; }
+.study-card input {
+  width: 100%; border: 1px solid var(--hairline); background: #fff;
+  font-family: var(--f-body); font-size: 15px; padding: .7em 1em;
+  outline: none; color: var(--ink);
+}
+.study-card input:focus { border-color: var(--ink); }
+#turnstile-box { margin-top: 1em; }
+.study-go {
+  width: 100%; margin-top: 1.4em;
+  background: var(--cinnabar); color: #fff; border: 1px solid var(--cinnabar);
+  font-family: var(--f-display); font-weight: 700;
+  font-size: 15px; letter-spacing: .3em; padding: .9em; cursor: pointer;
+  transition: background .4s, border-color .4s;
+}
+.study-go:hover { background: var(--ink); border-color: var(--ink); }
+.study-go.ghost { background: none; color: var(--ink-soft); border-color: var(--hairline); }
+.study-go.ghost:hover { color: var(--ink); border-color: var(--ink); }
+.study-status { margin-top: 1em; color: var(--cinnabar); min-height: 1.4em; }
+.study-sec { margin-top: 1.8em; }
+.study-sec > .t-info { color: var(--cinnabar); margin-bottom: .8em; display: block; }
+.study-item {
+  display: flex; justify-content: space-between; gap: 1em;
+  padding: .55em 0; border-bottom: 1px solid var(--hairline);
+  font-size: 14px;
+}
+.study-item:hover { color: var(--cinnabar); }
+.study-empty { font-size: 13px; color: var(--ink-soft); }
+
+/* ---------- 經中插圖 ---------- */
+.reader-flow .blk-img {
+  display: inline-block;
+  margin: 0 1em;
+  max-height: 100%;
+}
+.reader-flow .blk-img img {
+  max-height: 62vh; max-width: 38vw;
+  width: auto; height: auto;
+  border: 1px solid var(--r-line);
+  background: #fff; padding: 4px;
+}
+.reader.th-night .reader-flow .blk-img img { filter: invert(.92) hue-rotate(180deg); }
+.reader.mode-h .reader-flow .blk-img { display: block; margin: 1.5em auto; text-align: center; }
+.reader.mode-h .reader-flow .blk-img img { max-width: 100%; max-height: 70vh; margin: 0 auto; }
+
+/* ---------- 楷體 ---------- */
+.reader.f-kai .reader-flow {
+  font-family: "Kaiti TC", "Kaiti SC", "STKaiti", "楷體", "DFKai-SB", "BiauKai", var(--f-body);
+}
+
+/* ---------- 閱讀器翻頁引導（首次） ---------- */
+.reader-hint {
+  position: absolute; left: 50%; top: 12vh; transform: translateX(-50%);
+  z-index: 20;
+  background: var(--r-ink); color: var(--r-bg);
+  padding: .8em 1.6em; letter-spacing: .2em;
+  opacity: 0; pointer-events: none;
+  transition: opacity .6s;
+}
+.reader-hint.show { opacity: .92; }
+/* 翻頁熱區的常駐微箭頭 */
+.flip-zone::after {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-family: var(--f-body); font-size: 20px;
+  opacity: .16; transition: opacity .3s;
+}
+.flip-zone.prev::after { content: "›"; right: .4em; }
+.flip-zone.next::after { content: "‹"; left: .4em; }
+.flip-zone:hover::after { opacity: .55; }
+
+/* ---------- 提示浮層 ---------- */
 .toast {
   position: fixed; left: 50%; bottom: 5vh; transform: translateX(-50%) translateY(20px);
   background: var(--ink); color: var(--paper);
@@ -101,7 +280,7 @@
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 /* ============================================================
-   阅读器
+   閱讀器
    ============================================================ */
 .reader {
   position: fixed; inset: 0; z-index: 1100;
@@ -115,18 +294,18 @@
 }
 .reader.open { display: flex; }
 
-/* 主题 */
+/* 主題 */
 .reader.th-night { --r-bg: #12100c; --r-ink: #c9bfad; --r-line: rgba(201, 191, 173, .13); --r-frame: rgba(176, 141, 70, .5); }
 .reader.th-eink { --r-bg: #e8e6df; --r-ink: #141414; --r-line: rgba(20, 20, 20, .16); --r-frame: rgba(20, 20, 20, .45); }
 .reader.th-eink * { transition: none !important; }
 .reader.th-eink .reader-flow { text-rendering: optimizeSpeed; }
-/* 墨水屏颗粒感 */
+/* 墨水屏顆粒感 */
 .reader.th-eink::before {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 5;
   opacity: .5; mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* 翻页残影闪烁（墨水屏刷新模拟） */
+/* 翻頁殘影閃爍（墨水屏刷新模擬） */
 .reader-flash {
   position: absolute; inset: 0; background: #000; opacity: 0;
   pointer-events: none; z-index: 6;
@@ -152,7 +331,7 @@
 
 .reader-main { flex: 1; position: relative; overflow: hidden; display: flex; }
 
-/* 经书界栏边框 */
+/* 經書界欄邊框 */
 .reader-page {
   position: absolute; inset: 3.5vh 4vw;
   border: 1px solid var(--r-frame);
@@ -161,7 +340,7 @@
 }
 .reader-flow-clip { position: absolute; inset: 3.2em 2.4em; overflow: hidden; }
 
-/* 竖排：内容向左生长，translateX 正值翻页 */
+/* 豎排：內容向左生長，translateX 正值翻頁 */
 .reader-flow {
   writing-mode: vertical-rl;
   height: 100%;
@@ -171,7 +350,7 @@
   will-change: transform;
   position: absolute; top: 0; right: 0;
   transition: transform .55s var(--ease-brush);
-  /* 乌丝栏：一行一栏 */
+  /* 烏絲欄：一行一欄 */
   background-image: repeating-linear-gradient(to left,
     transparent 0, transparent calc(var(--fs) * 2.05 - 1px),
     var(--r-line) calc(var(--fs) * 2.05 - 1px), var(--r-line) calc(var(--fs) * 2.05));
@@ -183,7 +362,7 @@
 .reader-flow .blk-by { text-indent: 0; opacity: .6; font-size: .85em; margin-left: .8em; }
 .reader-flow .blk-dh { text-indent: 0; letter-spacing: .35em; font-weight: 700; }
 
-/* 横排模式 */
+/* 橫排模式 */
 .reader.mode-h .reader-flow {
   writing-mode: horizontal-tb;
   width: 100%; height: auto; position: static;
@@ -204,7 +383,7 @@
 .reader-bottom .group { display: flex; gap: .5em; align-items: center; }
 .reader-pageno { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; opacity: .7; }
 
-/* 翻页热区 */
+/* 翻頁熱區 */
 .flip-zone {
   position: absolute; top: 0; bottom: 0; width: 18%;
   cursor: pointer; z-index: 4;

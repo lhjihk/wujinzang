@@ -1,7 +1,7 @@
 /* ============================================================
-   無盡藏 · 主样式
-   设计基因：宣纸白底 × 玄墨压缩大字 × 矿物颜料点睛（朱砂/石青/石绿/泥金）
-   流式尺寸基准 1800px（参考站同款公式 max(px, unit/1800*100vw)）
+   無盡藏 · 主樣式
+   設計基因：宣紙白底 × 玄墨壓縮大字 × 礦物顏料點睛（硃砂/石青/石綠/泥金）
+   流式尺寸基準 1800px（參考站同款公式 max(px, unit/1800*100vw)）
    ============================================================ */
 
 :root {
@@ -9,9 +9,9 @@
   --paper-deep: #f1efe9;
   --ink: #17130e;
   --ink-soft: #4a443b;
-  --cinnabar: #a63a25;      /* 朱砂：只用于印章与点睛 */
+  --cinnabar: #a63a25;      /* 硃砂：只用於印章與點睛 */
   --azurite: #2b4a6b;       /* 石青 */
-  --malachite: #57705f;     /* 石绿 */
+  --malachite: #57705f;     /* 石綠 */
   --gold: #b08d46;          /* 泥金 */
   --hairline: rgba(23, 19, 14, .14);
 
@@ -70,7 +70,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: .04em;
 }
 
-/* ---------- 加载器 ---------- */
+/* ---------- 加載器 ---------- */
 .loader {
   position: fixed; inset: 0; z-index: 9999;
   background: var(--paper);
@@ -104,12 +104,12 @@ img { display: block; max-width: 100%; }
   background: var(--ink);
 }
 
-/* ---------- 导航 ---------- */
+/* ---------- 導航 ---------- */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
   display: flex; align-items: baseline; justify-content: space-between;
   padding: calc(var(--pad) * .6) var(--pad);
-  /* difference 混合：纸底上呈墨色，压到黑色卷轴段落自动反白 */
+  /* difference 混合：紙底上呈墨色，壓到黑色卷軸段落自動反白 */
   mix-blend-mode: difference;
   color: #e8e5df;
 }
@@ -130,7 +130,7 @@ img { display: block; max-width: 100%; }
 }
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); transform-origin: left; }
 
-/* ---------- 主页 hero ---------- */
+/* ---------- 主頁 hero ---------- */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -138,7 +138,7 @@ img { display: block; max-width: 100%; }
   padding: 0 var(--pad);
   overflow: hidden;
 }
-#fluid-canvas {
+#fluid-canvas, #mandala-canvas {
   position: absolute; inset: 0; z-index: 0;
   width: 100%; height: 100%;
   pointer-events: none;
@@ -175,7 +175,7 @@ img { display: block; max-width: 100%; }
   z-index: 1; color: var(--ink-soft);
 }
 
-/* ---------- 跑马灯经文 ---------- */
+/* ---------- 跑馬燈經文 ---------- */
 .marquee {
   border-top: 1px solid var(--hairline);
   border-bottom: 1px solid var(--hairline);
@@ -190,7 +190,7 @@ img { display: block; max-width: 100%; }
 }
 .marquee-track b { color: var(--cinnabar); font-weight: 700; }
 
-/* ---------- 展卷（朝元图横向卷轴）---------- */
+/* ---------- 展卷（朝元圖橫向卷軸）---------- */
 .scroll-sec { position: relative; }
 .scroll-head {
   padding: calc(var(--pad) * 3) var(--pad) calc(var(--pad) * 1.5);
@@ -228,7 +228,7 @@ img { display: block; max-width: 100%; }
   color: var(--paper); opacity: .8; z-index: 2;
 }
 
-/* ---------- 四壁画廊 ---------- */
+/* ---------- 四壁畫廊 ---------- */
 .gallery { padding: calc(var(--pad) * 3) var(--pad); }
 .gallery-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: calc(var(--pad) * 2); }
 .gallery-grid {
@@ -239,10 +239,10 @@ img { display: block; max-width: 100%; }
   align-items: end;
 }
 .work { position: relative; cursor: pointer; }
-.work:nth-child(1) { grid-column: 1 / span 4; }
-.work:nth-child(2) { grid-column: 5 / span 2; margin-bottom: 14vw; }
-.work:nth-child(3) { grid-column: 2 / span 4; margin-top: -6vw; }
-.work:nth-child(4) { grid-column: 1 / span 2; margin-top: 3vw; }
+.work:nth-of-type(1) { grid-column: 1 / span 4; }
+.work:nth-of-type(2) { grid-column: 5 / span 2; margin-bottom: 14vw; }
+.work:nth-of-type(3) { grid-column: 2 / span 4; margin-top: -6vw; }
+.work:nth-of-type(4) { grid-column: 1 / span 2; margin-top: 3vw; }
 .work-img { position: relative; overflow: hidden; background: var(--paper-deep); }
 .work-img img {
   width: 100%; height: auto;
@@ -261,7 +261,67 @@ img { display: block; max-width: 100%; }
   font-family: var(--f-mono); font-size: var(--t-info); color: var(--cinnabar);
 }
 
-/* ---------- 灯箱 ---------- */
+/* ---------- 畫廊留白處的豎排偈語 ---------- */
+.gallery-verse {
+  grid-column: 5 / span 2;
+  align-self: start;
+  justify-self: end;
+  writing-mode: vertical-rl;
+  font-family: var(--f-display); font-weight: 700;
+  font-size: max(15px, calc(20 / var(--bsw) * 100vw));
+  letter-spacing: .55em; line-height: 2.4;
+  color: var(--ink-soft); opacity: .55;
+  margin-top: 4vw;
+  pointer-events: none;
+}
+
+/* ---------- 第四幅旁的題記（展籤） ---------- */
+.colophon {
+  grid-column: 3 / span 2;
+  align-self: end;
+  display: flex; gap: 2.2em; align-items: flex-end;
+  padding-bottom: 2.6em;
+}
+.colophon-verse {
+  writing-mode: vertical-rl;
+  font-family: var(--f-display); font-weight: 900;
+  font-size: max(20px, calc(30 / var(--bsw) * 100vw));
+  letter-spacing: .4em; line-height: 1.9;
+  color: var(--ink);
+}
+.colophon-body { max-width: 17em; }
+.colophon-body .t-info { color: var(--cinnabar); display: block; margin-bottom: 1.2em; }
+.colophon-body p {
+  font-size: max(13px, calc(15 / var(--bsw) * 100vw));
+  line-height: 2.2; color: var(--ink-soft);
+}
+.colophon-seal {
+  width: 42px; height: 42px; margin-top: 1.4em;
+  border: 1.5px solid var(--cinnabar); color: var(--cinnabar);
+  display: flex; align-items: center; justify-content: center;
+  writing-mode: vertical-rl;
+  font-family: var(--f-display); font-weight: 900;
+  font-size: 11px; letter-spacing: .1em;
+}
+
+/* ---------- 別院（個人站的含蓄外鏈）---------- */
+.annex {
+  display: inline-flex; align-items: baseline; gap: .9em;
+  padding: .5em 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color .5s var(--ease-brush);
+}
+.annex:hover { border-color: var(--gold); }
+.annex-label { color: var(--gold); }
+.annex-name {
+  font-family: var(--f-display); font-weight: 700;
+  font-size: max(13px, calc(15 / var(--bsw) * 100vw));
+  letter-spacing: .3em; color: var(--ink-soft);
+}
+.annex:hover .annex-name { color: var(--ink); }
+.annex-mark { font-family: var(--f-mono); font-size: 11px; color: var(--gold); }
+
+/* ---------- 燈箱 ---------- */
 .lightbox {
   position: fixed; inset: 0; z-index: 1000;
   background: rgba(23, 19, 14, .96);
@@ -292,7 +352,7 @@ img { display: block; max-width: 100%; }
 .lightbox-close:hover { border-color: var(--paper); }
 .lightbox-hint { position: absolute; top: 2.5vh; left: var(--pad); opacity: .6; }
 
-/* ---------- 读经引子 ---------- */
+/* ---------- 讀經引子 ---------- */
 .reading-sec {
   min-height: 90vh;
   display: grid;
@@ -331,10 +391,11 @@ img { display: block; max-width: 100%; }
   opacity: .13; filter: saturate(.6);
 }
 
-/* ---------- 页脚 ---------- */
+/* ---------- 頁腳 ---------- */
 .footer {
   padding: calc(var(--pad) * 2) var(--pad);
-  display: flex; justify-content: space-between; align-items: end; gap: 2em;
+  display: flex; justify-content: space-between; align-items: end; gap: 1.5em 2em;
+  flex-wrap: wrap;
   border-top: 1px solid var(--hairline);
 }
 .footer-seal {
@@ -347,16 +408,71 @@ img { display: block; max-width: 100%; }
 }
 .footer .t-info { color: var(--ink-soft); }
 
-/* ---------- 进场动画初始态（JS 会解除）---------- */
+/* ---------- 同源（別院與頻道）---------- */
+.links-sec {
+  padding: calc(var(--pad) * 3) var(--pad);
+  display: grid; grid-template-columns: 1fr 1.6fr; gap: calc(var(--pad) * 2);
+  align-items: start;
+  border-top: 1px solid var(--hairline);
+}
+.links-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--pad); }
+.link-card {
+  border: 1px solid var(--ink);
+  padding: 2em;
+  display: flex; flex-direction: column; gap: 1.1em;
+  min-height: 15em;
+  transition: background .5s var(--ease-brush), color .5s var(--ease-brush);
+}
+.link-card:hover { background: var(--ink); color: var(--paper); }
+.link-card:hover .lc-go { color: var(--gold); }
+.lc-label { color: var(--cinnabar); }
+.link-card:hover .lc-label { color: var(--gold); }
+.lc-name {
+  font-family: var(--f-display); font-weight: 900;
+  font-size: max(20px, calc(34 / var(--bsw) * 100vw));
+  letter-spacing: .12em;
+}
+.lc-desc { color: var(--ink-soft); font-size: max(13px, calc(15 / var(--bsw) * 100vw)); line-height: 2; flex: 1; }
+.link-card:hover .lc-desc { color: rgba(250, 249, 246, .7); }
+.lc-go { align-self: flex-end; letter-spacing: .2em; }
+@media (max-width: 900px) {
+  .links-sec { grid-template-columns: 1fr; }
+  .links-row { grid-template-columns: 1fr; }
+}
+
+/* ---------- 創建落款 ---------- */
+.founded-line {
+  display: flex; justify-content: center; gap: 2.5em; flex-wrap: wrap;
+  padding: 0 var(--pad) calc(var(--pad) * 1.2);
+  color: var(--ink-soft);
+}
+.founded-line .t-mono { color: rgba(23, 19, 14, .35); }
+
+/* ---------- 藏經閣傳承說明 ---------- */
+.canon-heritage {
+  margin: 0 var(--pad) calc(var(--pad) * 1.6);
+  padding: 1.2em 1.6em;
+  border-left: 2px solid var(--gold);
+  background: var(--paper-deep);
+  font-family: var(--f-display);
+  font-size: max(13px, calc(15 / var(--bsw) * 100vw));
+  line-height: 2.1; color: var(--ink-soft);
+  max-width: 52em;
+}
+
+/* ---------- 進場動畫初始態（JS 會解除）---------- */
 .js .rise { opacity: 0; transform: translateY(46px); }
 .js .hero-title span { opacity: 0; transform: translateY(60%) rotate(4deg); }
 
-/* ---------- 响应式 ---------- */
+/* ---------- 響應式 ---------- */
 @media (max-width: 900px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); row-gap: 70px; }
-  .work:nth-child(n) { grid-column: auto / span 2; margin: 0; }
-  .work:nth-child(2) { grid-column: auto / span 1; }
-  .work:nth-child(4) { grid-column: auto / span 1; }
+  .work:nth-of-type(n) { grid-column: auto / span 2; margin: 0 !important; }
+  .work:nth-of-type(2) { grid-column: auto / span 1; }
+  .work:nth-of-type(4) { grid-column: auto / span 1; }
+  .gallery-verse { display: none; }
+  .colophon { grid-column: auto / span 1; padding-bottom: 0; gap: 1.2em; }
+  .colophon-verse { font-size: 16px; }
   .reading-sec { grid-template-columns: 1fr; }
   .reading-right { writing-mode: horizontal-tb; line-height: 2.2; letter-spacing: .2em; text-align: center; padding: 2em 0; }
   .hero-quote { display: none; }

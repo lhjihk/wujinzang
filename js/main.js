@@ -1,7 +1,7 @@
-/* main.js — 主页动画总控
-   加载器汉字计数 → 朱印落章 → 开卷；Lenis 平滑滚动 + GSAP 编排；
-   朝元图横向展卷（pin + scrub）；画廊灯箱。
-   铁律：GSAP 管 transform 的元素，CSS 绝不再碰 transform（旧站踩过的坑）。 */
+/* main.js — 主頁動畫總控
+   加載器漢字計數 → 朱印落章 → 開卷；Lenis 平滑滾動 + GSAP 編排；
+   朝元圖橫向展卷（pin + scrub）；畫廊燈箱。
+   鐵律：GSAP 管 transform 的元素，CSS 絕不再碰 transform（舊站踩過的坑）。 */
 (function () {
   'use strict';
 
@@ -14,7 +14,7 @@
     if (c) buildMarquee(c);
   });
 
-  /* ---------- 加载器 ---------- */
+  /* ---------- 加載器 ---------- */
   function runLoader(done) {
     var num = document.getElementById('loader-num');
     var seal = document.getElementById('loader-seal');
@@ -53,12 +53,12 @@
     });
   }
 
-  /* ---------- 开场 + 滚动编排 ---------- */
+  /* ---------- 開場 + 滾動編排 ---------- */
   function start(c) {
     if (!window.gsap) return revealAll();
     gsap.registerPlugin(ScrollTrigger);
 
-    // Lenis 平滑滚动
+    // Lenis 平滑滾動
     var lenis = null;
     if (window.Lenis && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
       lenis = new Lenis({ lerp: .09 });
@@ -67,7 +67,7 @@
       gsap.ticker.lagSmoothing(0);
     }
 
-    // hero 标题逐字升起
+    // hero 標題逐字升起
     gsap.to('.hero-title span', {
       opacity: 1, y: 0, rotate: 0, duration: 1.4, ease: 'power4.out',
       stagger: { each: .09, from: 'random' }, delay: .15
@@ -76,7 +76,7 @@
       opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', stagger: .12, delay: .7
     });
 
-    // 各区块 rise 进场
+    // 各區塊 rise 進場
     gsap.utils.toArray('.rise').forEach(function (el) {
       if (el.closest('.hero') || el.classList.contains('hero-quote')) return;
       gsap.to(el, {
@@ -87,6 +87,20 @@
 
     horizontalScroll();
     lightbox();
+    galleryParallax();
+  }
+
+  /* 畫廊視差：各幅隨滾動以不同速度漂移，散排更有縱深（GSAP 獨佔 transform，CSS 只管 margin） */
+  function galleryParallax() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var speeds = [-40, 60, -70, 50, 90, -30];
+    gsap.utils.toArray('.gallery-grid > *').forEach(function (el, i) {
+      gsap.fromTo(el, { y: 0 }, {
+        y: speeds[i % speeds.length],
+        ease: 'none',
+        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 1.4 }
+      });
+    });
   }
 
   function revealAll() {
@@ -95,7 +109,7 @@
     });
   }
 
-  /* ---------- 朝元图横向展卷 ---------- */
+  /* ---------- 朝元圖橫向展卷 ---------- */
   function horizontalScroll() {
     var stage = document.getElementById('scroll-stage');
     var strip = document.getElementById('scroll-strip');
@@ -122,7 +136,7 @@
       }
     });
 
-    // 图片全载后重新计算 pin 距离
+    // 圖片全載後重新計算 pin 距離
     var imgs = strip.querySelectorAll('img'), left = imgs.length;
     imgs.forEach(function (im) {
       if (im.complete) { if (--left === 0) ScrollTrigger.refresh(); }
@@ -130,7 +144,7 @@
     });
   }
 
-  /* ---------- 画廊 ---------- */
+  /* ---------- 畫廊 ---------- */
   function buildGallery(c) {
     var grid = document.getElementById('gallery-grid');
     if (!grid || !c.gallery) return;
@@ -147,6 +161,26 @@
       el.addEventListener('keydown', function (e) { if (e.key === 'Enter') openWork(w); });
       grid.appendChild(el);
     });
+
+    // 第四幅旁的題記（展籤），有 colophon 字段才出現
+    var last = c.gallery.works[c.gallery.works.length - 1];
+    if (last && last.colophon) {
+      var col = document.createElement('aside');
+      col.className = 'colophon rise';
+      col.innerHTML =
+        '<div class="colophon-verse">' + (last.colophon_verse || '') + '</div>' +
+        '<div class="colophon-body"><span class="t-info">' + (last.colophon_title || '題記') + ' · COLOPHON</span>' +
+        '<p>' + last.colophon + '</p>' +
+        '<div class="colophon-seal">' + ((c.site && c.site.footer_seal) || '無盡藏') + '</div></div>';
+      grid.appendChild(col);
+    }
+    // 留白處的豎排偈語
+    if (c.gallery.deco_verse) {
+      var v = document.createElement('aside');
+      v.className = 'gallery-verse rise';
+      v.textContent = c.gallery.deco_verse;
+      grid.appendChild(v);
+    }
   }
 
   var lbEls = null;
@@ -160,8 +194,14 @@
       scroll: document.getElementById('lightbox-scroll')
     };
     lbEls.close.addEventListener('click', closeWork);
+    // 原作尊貴：燈箱與畫廊不供右鍵取圖、不供拖拽（防君子）
+    lbEls.root.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    document.querySelectorAll('.work-img img, #lightbox-img').forEach(function (im) { im.draggable = false; });
+    document.querySelector('.gallery').addEventListener('contextmenu', function (e) {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeWork(); });
-    // 拖拽平移长卷
+    // 拖拽平移長卷
     var down = false, sx = 0, sl = 0;
     lbEls.scroll.addEventListener('pointerdown', function (e) { down = true; sx = e.clientX; sl = lbEls.scroll.scrollLeft; });
     window.addEventListener('pointermove', function (e) { if (down) lbEls.scroll.scrollLeft = sl - (e.clientX - sx); });
@@ -182,7 +222,7 @@
     document.body.classList.remove('no-scroll');
   }
 
-  /* ---------- 跑马灯：滚动越快经文跑越快（gsap.ticker 手动推进） ---------- */
+  /* ---------- 跑馬燈：滾動越快經文跑越快（gsap.ticker 手動推進） ---------- */
   function buildMarquee(c) {
     var track = document.getElementById('marquee-track');
     if (!track) return;

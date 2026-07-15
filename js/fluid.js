@@ -1,6 +1,6 @@
-/* fluid.js — 香烟：WebGL 曲噪声流体
-   鼠标过处留下一缕金灰色烟，随噪声场向上飘散，如殿中香火。
-   WebGL1 + 8bit 反馈纹理，不支持时静默降级（不显示，不报错）。 */
+/* fluid.js — 香菸：WebGL 曲噪聲流體
+   殿中常燃一炷香：固定香頭持續生煙，緩緩上升飄散（無需鼠標/觸摸也在燃）；
+   鼠標/手指過處另留一縷煙。WebGL1 + 8bit 反饋紋理，不支持時靜默降級。 */
 (function () {
   'use strict';
 
@@ -15,7 +15,7 @@
     'void main(){ uv = p * .5 + .5; gl_Position = vec4(p, 0., 1.); }'
   ].join('\n');
 
-  // 更新通道：曲噪声平流 + 衰减 + 鼠标注入
+  // 更新通道：曲噪聲平流 + 衰減 + 鼠標註入
   var FRAG_UPDATE = [
     'precision mediump float;',
     'varying vec2 uv;',
@@ -23,6 +23,7 @@
     'uniform vec2 res;',
     'uniform vec2 mouse;',
     'uniform vec2 mvel;',
+    'uniform vec2 ember;', // 香頭位置
     'uniform float time;',
     'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }',
     'float noise(vec2 p){',
@@ -33,7 +34,7 @@
     '}',
     'float fbm(vec2 p){ float v = 0.; float a = .5;',
     '  for(int i = 0; i < 4; i++){ v += a * noise(p); p *= 2.03; a *= .5; } return v; }',
-    // 曲噪声：势场的旋度，天然无散度，烟不会糊成一团
+    // 曲噪聲：勢場的旋度，天然無散度，煙不會糊成一團
     'vec2 curl(vec2 p){',
     '  float e = .01;',
     '  float n1 = fbm(p + vec2(0., e));',
@@ -44,25 +45,27 @@
     '}',
     'void main(){',
     '  vec2 asp = vec2(res.x / res.y, 1.);',
-    '  vec2 v = curl(uv * asp * 3. + vec2(0., -time * .12)) * .0016;',
-    '  v.y += .0012;', // 热气上升
-    '  float d = texture2D(tex, uv - v).r * .972;',
+    '  vec2 v = curl(uv * asp * 3. + vec2(0., -time * .12)) * .0019;',
+    '  v.y += .0016;', // 熱氣上升
+    '  float d = texture2D(tex, uv - v).r * .979;',
     '  vec2 dm = (uv - mouse) * asp;',
-    '  float splat = exp(-dot(dm, dm) * 900.) * (length(mvel) * 22. + .05);',
-    '  d += splat;',
+    '  d += exp(-dot(dm, dm) * 900.) * (length(mvel) * 26. + .012);',
+    // 香頭：細而持續的煙源，隨呼吸微微明滅
+    '  vec2 de = (uv - ember) * asp;',
+    '  d += exp(-dot(de, de) * 5200.) * (.22 + .1 * sin(time * 1.7));',
     '  gl_FragColor = vec4(clamp(d, 0., 1.), 0., 0., 1.);',
     '}'
   ].join('\n');
 
-  // 显示通道：密度 → 金灰烟色
+  // 顯示通道：密度 → 金灰煙色
   var FRAG_SHOW = [
     'precision mediump float;',
     'varying vec2 uv;',
     'uniform sampler2D tex;',
     'void main(){',
     '  float d = texture2D(tex, uv).r;',
-    '  vec3 smoke = mix(vec3(.29, .27, .23), vec3(.69, .55, .27), smoothstep(.0, .55, d));',
-    '  float a = smoothstep(.015, .5, d) * .34;',
+    '  vec3 smoke = mix(vec3(.30, .28, .24), vec3(.69, .55, .27), smoothstep(.0, .5, d));',
+    '  float a = smoothstep(.012, .42, d) * .5;',
     '  gl_FragColor = vec4(smoke, a);',
     '}'
   ].join('\n');
@@ -90,7 +93,7 @@
   gl.bindBuffer(gl.ARRAY_BUFFER, quad);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
 
-  var SIM = 384; // 模拟分辨率，烟本来就该是糊的
+  var SIM = 384; // 模擬分辨率，煙本來就該是糊的
   function makeTarget() {
     var t = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, t);
@@ -143,10 +146,13 @@
     gl.uniform2f(gl.getUniformLocation(progU, 'res'), canvas.width, canvas.height);
     gl.uniform2f(gl.getUniformLocation(progU, 'mouse'), mouse.x, mouse.y);
     gl.uniform2f(gl.getUniformLocation(progU, 'mvel'), mouse.vx, mouse.vy);
+    // 香頭立於右下，隨氣流輕輕搖曳
+    gl.uniform2f(gl.getUniformLocation(progU, 'ember'),
+      .72 + Math.sin(now * .35) * .012, .14 + Math.sin(now * .21) * .008);
     gl.uniform1f(gl.getUniformLocation(progU, 'time'), now);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-    // 显示
+    // 顯示
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     gl.viewport(0, 0, canvas.width, canvas.height);
     gl.clearColor(0, 0, 0, 0);

@@ -1,0 +1,146 @@
+[
+ {
+  "code": "T",
+  "name": "大正新脩大藏經",
+  "short": "大正藏",
+  "count": 2457
+ },
+ {
+  "code": "X",
+  "name": "卍新纂大日本續藏經",
+  "short": "卍續藏",
+  "count": 1230
+ },
+ {
+  "code": "J",
+  "name": "嘉興大藏經",
+  "short": "徑山藏",
+  "count": 285
+ },
+ {
+  "code": "B",
+  "name": "大藏經補編",
+  "short": "補編",
+  "count": 201
+ },
+ {
+  "code": "A",
+  "name": "趙城金藏",
+  "short": "金藏",
+  "count": 9
+ },
+ {
+  "code": "K",
+  "name": "高麗大藏經",
+  "short": "高麗藏",
+  "count": 9
+ },
+ {
+  "code": "L",
+  "name": "乾隆大藏經",
+  "short": "龍藏",
+  "count": 21
+ },
+ {
+  "code": "M",
+  "name": "卍正藏經",
+  "short": "卍正藏",
+  "count": 1
+ },
+ {
+  "code": "P",
+  "name": "永樂北藏",
+  "short": "北藏",
+  "count": 13
+ },
+ {
+  "code": "U",
+  "name": "洪武南藏",
+  "short": "南藏",
+  "count": 2
+ },
+ {
+  "code": "S",
+  "name": "宋藏遺珍",
+  "short": "宋藏遺珍",
+  "count": 2
+ },
+ {
+  "code": "F",
+  "name": "房山石經",
+  "short": "房山石經",
+  "count": 27
+ },
+ {
+  "code": "C",
+  "name": "中華大藏經",
+  "short": "中華藏",
+  "count": 10
+ },
+ {
+  "code": "D",
+  "name": "國家圖書館善本佛典",
+  "short": "善本佛典",
+  "count": 64
+ },
+ {
+  "code": "G",
+  "name": "佛教大藏經",
+  "short": "佛教大藏經",
+  "count": 6
+ },
+ {
+  "code": "N",
+  "name": "南傳大藏經",
+  "short": "南傳藏",
+  "count": 38
+ },
+ {
+  "code": "GA",
+  "name": "中國佛寺史志彙刊",
+  "short": "佛寺史志",
+  "count": 36
+ },
+ {
+  "code": "GB",
+  "name": "中國佛寺志叢刊",
+  "short": "佛寺志叢刊",
+  "count": 2
+ },
+ {
+  "code": "I",
+  "name": "北朝佛教石刻拓片百品",
+  "short": "北朝石刻",
+  "count": 101
+ },
+ {
+  "code": "ZW",
+  "name": "藏外佛教文獻",
+  "short": "藏外文獻",
+  "count": 202
+ },
+ {
+  "code": "TX",
+  "name": "太虛大師全書",
+  "short": "太虛全書",
+  "count": 21
+ },
+ {
+  "code": "Y",
+  "name": "印順法師佛學著作集",
+  "short": "印順著作",
+  "count": 42
+ },
+ {
+  "code": "LC",
+  "name": "呂澂佛學著作集",
+  "short": "呂澂著作",
+  "count": 7
+ },
+ {
+  "code": "ZS",
+  "name": "正史佛教資料類編",
+  "short": "正史類編",
+  "count": 1
+ }
+]

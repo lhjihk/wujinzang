@@ -1,5 +1,5 @@
-/* boot.js — 数据引导：拉 content.json → 注入 data-txt → 广播 site:ready
-   与旧站同一思路：页面是壳，内容全在 JSON。 */
+/* boot.js — 數據引導：拉 content.json → 注入 data-txt → 廣播 site:ready
+   與舊站同一思路：頁面是殼，內容全在 JSON。 */
 (function () {
   'use strict';
 
@@ -19,7 +19,12 @@
         if (typeof v === 'string' && v) el.textContent = v;
       });
 
-      // 需要逐字拆分做动画的标题
+      document.querySelectorAll('[data-href]').forEach(function (el) {
+        var v = get(c, el.getAttribute('data-href'));
+        if (typeof v === 'string' && v) el.href = v;
+      });
+
+      // 需要逐字拆分做動畫的標題
       document.querySelectorAll('[data-split]').forEach(function (el) {
         var v = get(c, el.getAttribute('data-split')) || el.textContent;
         el.textContent = '';
@@ -34,7 +39,7 @@
     })
     .catch(function (e) {
       console.error('[boot]', e);
-      // 数据取不到也要能看：解除隐藏态
+      // 數據取不到也要能看：解除隱藏態
       document.querySelectorAll('.rise').forEach(function (el) {
         el.style.opacity = 1; el.style.transform = 'none';
       });
