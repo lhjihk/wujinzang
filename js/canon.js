@@ -167,7 +167,7 @@
 
   function spineEl(b, code) {
     var el = document.createElement('div');
-    el.className = 'spine';
+    el.className = 'spine has-text';
     el.setAttribute('tabindex', '0');
     var fav = Member.isFav(b.id);
     el.innerHTML =

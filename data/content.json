@@ -2,13 +2,13 @@
   "_version": "2.0.0",
   "_comment": "全站唯一數據源。改文案/壁畫說明/精選經文都在這裡，不用碰HTML。編輯臺(admin.html)就是給這個文件做表單。",
   "site": {
-    "name": "心燈文錄",
+    "name": "心灯文录",
     "latin": "XINDENG WENLU",
     "tagline": "RECORDS OF THE HEART-LAMP",
     "year": "MMXXVI",
     "nav_home": "梵境",
     "nav_canon": "藏經閣",
-    "footer_line": "畫作原件均為公有領域博物館級掃描 · 經文取自 CBETA 電子佛典 · 私人清修之用",
+    "footer_line": "畫作原件均為公有領域博物館級掃描 · 私人清修之用",
     "footer_seal": "無盡藏",
     "annex_label": "別院",
     "annex_name": "踏破腐朽",
@@ -22,7 +22,7 @@
     "yt_note": "法音流佈 · YOUTUBE"
   },
   "hero": {
-    "title": "心燈文錄",
+    "title": "心灯文录",
     "sub": "佛典壁畫 · 在線讀經",
     "en_line1": "MURALS OF YONGLE PALACE · MOGAO GROTTOES · TIBETAN THANGKA",
     "en_line2": "SCRIPTURE READING ROOM — EST. MMXXVI",
@@ -116,8 +116,8 @@
     "shelf_label": "諸藏列函 · THE COLLECTIONS",
     "search_hint": "檢索結果",
     "locked_note": "此典全文缺失，可於編輯臺重新上傳",
-    "heritage": "閣中經文悉依 CBETA 電子佛典錄入，原版原繁體，一字未經簡化與刪改；插圖版畫悉數保留。諸藏各附源流，供識其寶貴。",
-    "heritage_en": "ALL TEXTS IN ORIGINAL TRADITIONAL CHINESE, UNSIMPLIFIED AND UNABRIDGED, FROM THE CBETA CORPUS."
+    "heritage": "閣中經文原版原繁體，一字未經簡化與刪改；插圖版畫悉數保留。諸藏各附源流，供識其寶貴。",
+    "heritage_en": "ALL TEXTS IN ORIGINAL TRADITIONAL CHINESE, UNSIMPLIFIED AND UNABRIDGED."
   },
   "reader": {
     "themes": [

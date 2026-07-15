@@ -3,144 +3,192 @@
   "code": "T",
   "name": "大正新脩大藏經",
   "short": "大正藏",
-  "count": 2457
+  "count": 2457,
+  "desc": "一九二四至一九三四年，日本高楠順次郎、渡邊海旭主持編修於東京。以《高麗藏》再雕本為底本，對校宋思溪、元普寧、明嘉興諸藏及正倉院古寫經，收經律論及中日撰述三千餘部，分類編號之精密前所未有。今日全世界學界引用佛典，皆以「T」為準——它是漢文佛典的現代標準本。",
+  "desc_en": "Compiled in Tokyo (1924-34) under Takakusu Junjiro on the Goryeo Canon base, collated against Song, Yuan and Ming editions. Its numbering remains the universal scholarly standard for the Chinese canon."
  },
  {
   "code": "X",
   "name": "卍新纂大日本續藏經",
   "short": "卍續藏",
-  "count": 1230
+  "count": 1230,
+  "desc": "一九〇五至一九一二年日本京都藏經書院編印《卍大日本續藏經》，後臺灣重編新纂。專收大正藏所遺的中土撰述——禪宗語錄、天台華嚴註疏、淨土文獻近千部，其中大量孤本僅賴此藏傳世。研究中國佛教思想史，此藏與大正藏缺一不可。",
+  "desc_en": "The Kyoto supplement (1905-12, later re-edited) preserving nearly a thousand East Asian commentaries and Chan records omitted from the Taisho — many surviving nowhere else."
  },
  {
   "code": "J",
   "name": "嘉興大藏經",
   "short": "徑山藏",
-  "count": 285
+  "count": 285,
+  "desc": "明萬曆十七年（1589）發願刻於五臺山，後移徑山寂照庵，清康熙年間終成，流通處設嘉興楞嚴寺，故名。首創方冊線裝取代梵夾舊式，令大藏經走入尋常寺院書齋；又廣收明清高僧語錄文集，為諸藏所無。本站藏經閣即以此藏發端。",
+  "desc_en": "Vowed in 1589 and carved at Jingshan over a century, distributed from Jiaxing. The first thread-bound canon, uniquely rich in Ming-Qing masters' records — the founding collection of this library."
  },
  {
   "code": "B",
   "name": "大藏經補編",
   "short": "補編",
-  "count": 201
+  "count": 201,
+  "desc": "藍吉富主編《大藏經補編》，一九八四年臺北出版。網羅歷代藏經未收的要典：敦煌遺書、日韓古逸、南傳譯籍、近世著述凡二百餘部，補諸藏之闕漏，多為研究者夢寐以求的珍本。",
+  "desc_en": "Lan Chi-fu's 1984 supplement of two hundred rare works never entered in any canon: Dunhuang texts, lost works preserved in Japan and Korea, and more."
  },
  {
   "code": "A",
   "name": "趙城金藏",
   "short": "金藏",
-  "count": 9
+  "count": 9,
+  "desc": "金皇統九年（1149）前後，山西潞州民女崔法珍斷臂募緣，聚民間之力刻藏於解州天寧寺，凡三十年乃成。此藏以《開寶藏》為底本覆刻，一九三三年於趙城廣勝寺霍然重現，舉世僅存一部，今為國家圖書館鎮館之寶。",
+  "desc_en": "Funded by a woman who severed her arm to raise alms (c.1149), this folk-carved canon vanished for centuries until its 1933 rediscovery at Guangsheng Temple — the sole surviving copy."
  },
  {
   "code": "K",
   "name": "高麗大藏經",
   "short": "高麗藏",
-  "count": 9
+  "count": 9,
+  "desc": "高麗高宗二十三年（1236）為禳蒙古兵禍發願再雕，十六年而成，八萬一千餘板今存伽倻山海印寺，木板七百年完好如初，世稱「八萬大藏經」。其校勘之精審冠絕諸藏，大正藏即以之為底本。",
+  "desc_en": "The 81,000 woodblocks recarved (1236-51) to ward off the Mongol invasions, still intact at Haeinsa. Its textual accuracy made it the base of the Taisho edition."
  },
  {
   "code": "L",
   "name": "乾隆大藏經",
   "short": "龍藏",
-  "count": 21
+  "count": 21,
+  "desc": "清雍正十一年（1733）敕修，乾隆三年（1738）告成，內府梨木雕板七萬九千餘塊，世稱《龍藏》。為中國歷史上最後一部官刻大藏經，雕印之精、用料之奢皆為歷代之冠，經板至今大部尚存。",
+  "desc_en": "The imperially carved \"Dragon Canon\" (1733-38), last of China's official canons; most of its 79,000 blocks survive today."
  },
  {
   "code": "M",
   "name": "卍正藏經",
   "short": "卍正藏",
-  "count": 1
+  "count": 1,
+  "desc": "日本明治三十五年（1902）京都藏經書院以黃檗山鐵眼道光禪師翻刻之明嘉興藏為底本排印，因版心有卍字記號，稱《卍正藏經》。與《卍續藏》相配，正續合璧。",
+  "desc_en": "The Meiji \"Manji Canon\" (1902), typeset from Tetsugen's Obaku edition of the Jiaxing Canon; paired with the Manji Supplement."
  },
  {
   "code": "P",
   "name": "永樂北藏",
   "short": "北藏",
-  "count": 13
+  "count": 13,
+  "desc": "明成祖永樂八年（1410）敕刻於北京，歷二十餘年而成，專供宮廷頒賜天下名山大寺，裝潢華貴，卷首多冠御製經序。與南藏並稱明代官刻二藏。",
+  "desc_en": "The Yongle Northern Canon (from 1410), imperially carved in Beijing for bestowal upon great monasteries, lavishly produced with imperial prefaces."
  },
  {
   "code": "U",
   "name": "洪武南藏",
   "short": "南藏",
-  "count": 2
+  "count": 2,
+  "desc": "明太祖洪武五年（1372）敕刻於南京蔣山寺，為明代第一部官藏。板燬於永樂六年大火，印本傳世極罕，今僅四川省圖書館存一部全帙，彌足珍貴。",
+  "desc_en": "The Hongwu Southern Canon (1372), first Ming official canon; its blocks burned in 1408, and a single complete copy survives in Sichuan."
  },
  {
   "code": "S",
   "name": "宋藏遺珍",
   "short": "宋藏遺珍",
-  "count": 2
+  "count": 2,
+  "desc": "宋代刻藏多燬於兵燹，《宋藏遺珍》乃二十世紀自趙城金藏等處輯印的宋藏散佚孤本，吉光片羽，皆世所未見之典。",
+  "desc_en": "Rare fragments of lost Song-dynasty canon editions, recovered and reprinted in the twentieth century."
  },
  {
   "code": "F",
   "name": "房山石經",
   "short": "房山石經",
-  "count": 27
+  "count": 27,
+  "desc": "隋大業年間僧靜琬憂「末法法滅」，發願刻經於石，藏之房山雲居寺石洞；歷隋唐遼金明千餘年，僧俗接力刻石一萬四千餘塊。一九五六年整理拓印，塵封千年的石經重見天日，是人類史上最悲壯的護法工程。",
+  "desc_en": "Begun by Jingwan (c.605) against the dharma's prophesied end: sutras carved on 14,000 stone slabs over a millennium, sealed in the Yunju Temple caves at Fangshan."
  },
  {
   "code": "C",
   "name": "中華大藏經",
   "short": "中華藏",
-  "count": 10
+  "count": 10,
+  "desc": "一九八二年起中華書局編修，以存世孤本趙城金藏為底本影印，並以歷代八種藏經對校出詳細校記，收經四千餘部，是中國大陸整理大藏經的集大成之作。",
+  "desc_en": "China's modern scholarly canon (from 1982): the unique Zhaocheng Canon photolithographed with collation notes from eight historical editions."
  },
  {
   "code": "D",
   "name": "國家圖書館善本佛典",
   "short": "善本佛典",
-  "count": 64
+  "count": 64,
+  "desc": "國家圖書館所藏善本佛典的整理彙編，多為敦煌寫卷、宋元刻本與歷代名家寫經，每一部都是穿越劫火倖存的原件。",
+  "desc_en": "Rare Buddhist manuscripts and early printings from the National Library of China, including Dunhuang scrolls and Song-Yuan editions."
  },
  {
   "code": "G",
   "name": "佛教大藏經",
   "short": "佛教大藏經",
-  "count": 6
+  "count": 6,
+  "desc": "民國間上海佛學書局排印之《佛教大藏經》，選收要典流通，為近代居士佛教運動的產物。",
+  "desc_en": "A Republican-era canon typeset in Shanghai for the lay Buddhist movement."
  },
  {
   "code": "N",
   "name": "南傳大藏經",
   "short": "南傳藏",
-  "count": 38
+  "count": 38,
+  "desc": "南傳上座部巴利三藏之漢譯全帙，一九九〇至九八年高雄元亨寺據日譯本轉譯，經律論俱全。漢語世界得窺巴利佛典全貌，唯此一藏。",
+  "desc_en": "The complete Pali Tipitaka in Chinese (Yuan Heng Temple, 1990-98) — the only full Chinese rendering of the Theravada canon."
  },
  {
   "code": "GA",
   "name": "中國佛寺史志彙刊",
   "short": "佛寺史志",
-  "count": 36
+  "count": 36,
+  "desc": "《中國佛寺史志彙刊》，收歷代名山大寺之山志寺志百餘種。一寺之志即一寺之史，飛來峰的題刻、徑山的鐘板、普陀的潮音皆在其中。",
+  "desc_en": "Over a hundred historical gazetteers of China's great monasteries and sacred mountains — each the full chronicle of one temple."
  },
  {
   "code": "GB",
   "name": "中國佛寺志叢刊",
   "short": "佛寺志叢刊",
-  "count": 2
+  "count": 2,
+  "desc": "《中國佛寺志叢刊》，繼彙刊之後再輯佛寺方志，補其未備。",
+  "desc_en": "A further series of Chinese monastery gazetteers, supplementing the first collection."
  },
  {
   "code": "I",
   "name": "北朝佛教石刻拓片百品",
   "short": "北朝石刻",
-  "count": 101
+  "count": 101,
+  "desc": "《北朝佛教石刻拓片百品》，中研院史語所選輯北朝造像記與刻經拓片百種。刀鋒下的信仰，金石中的佛教史，書法亦稱絕品。",
+  "desc_en": "A hundred Northern-Dynasties votive inscriptions and sutra carvings in rubbings — Buddhist history cut in stone, and calligraphic treasures."
  },
  {
   "code": "ZW",
   "name": "藏外佛教文獻",
   "short": "藏外文獻",
-  "count": 202
+  "count": 202,
+  "desc": "方廣錩主編《藏外佛教文獻》，整理敦煌遺書等從未入藏的寫本佛典。這些文獻在藏經之外沉睡千年，經現代學者之手方始重光。",
+  "desc_en": "Fang Guangchang's series of manuscript texts never entered into any canon — mostly Dunhuang finds, asleep for a millennium."
  },
  {
   "code": "TX",
   "name": "太虛大師全書",
   "short": "太虛全書",
-  "count": 21
+  "count": 21,
+  "desc": "《太虛大師全書》。太虛（1890–1947）倡「人生佛教」，主張佛法當入世度生，為二十世紀漢傳佛教革新之父，印順、星雲、聖嚴皆承其緒。",
+  "desc_en": "The complete works of Master Taixu (1890-1947), father of modern Humanistic Buddhism and of twentieth-century Buddhist reform."
  },
  {
   "code": "Y",
   "name": "印順法師佛學著作集",
   "short": "印順著作",
-  "count": 42
+  "count": 42,
+  "desc": "《印順法師佛學著作集》。印順（1906–2005）以史學治佛學，《中觀今論》《佛法概論》等重估全體佛法，被譽為「玄奘以來第一人」。",
+  "desc_en": "The collected works of Master Yinshun (1906-2005), whose historical-critical scholarship reshaped modern Chinese Buddhist thought."
  },
  {
   "code": "LC",
   "name": "呂澂佛學著作集",
   "short": "呂澂著作",
-  "count": 7
+  "count": 7,
+  "desc": "《呂澂佛學著作集》。呂澂（1896–1989）精通梵藏巴利，支那內學院承歐陽竟無之學，唯識因明研究之深，近世無出其右。",
+  "desc_en": "The works of Lü Cheng (1896-1989), master philologist of Yogacara and Buddhist logic at the China Inner Learning Institute."
  },
  {
   "code": "ZS",
   "name": "正史佛教資料類編",
   "short": "正史類編",
-  "count": 1
+  "count": 1,
+  "desc": "杜斗城輯《正史佛教資料類編》，將二十四史中一切涉佛史料分類輯出，讀史者檢佛教興衰於正史，一編在手。",
+  "desc_en": "All Buddhist source material in the twenty-four official dynastic histories, extracted and arranged by category."
  }
 ]

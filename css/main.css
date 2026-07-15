@@ -4,6 +4,13 @@
    流式尺寸基準 1800px（參考站同款公式 max(px, unit/1800*100vw)）
    ============================================================ */
 
+/* 站名題字：鴻雷行書（6.5KB 子集，只含站名與導航字） */
+@font-face {
+  font-family: "BrushHonglei";
+  src: url("../assets/fonts/honglei-logo.woff2") format("woff2");
+  font-display: swap;
+}
+
 :root {
   --paper: #faf9f6;
   --paper-deep: #f1efe9;
@@ -116,9 +123,10 @@ img { display: block; max-width: 100%; }
 .nav a { color: inherit; }
 .nav-logo em { color: inherit; }
 .nav-logo {
-  font-family: var(--f-display); font-weight: 900;
-  font-size: max(18px, calc(26 / var(--bsw) * 100vw));
-  letter-spacing: .18em;
+  font-family: "BrushHonglei", var(--f-display);
+  font-weight: 400;
+  font-size: max(24px, calc(34 / var(--bsw) * 100vw));
+  letter-spacing: .1em;
 }
 .nav-links { display: flex; gap: 2.4em; align-items: baseline; }
 .nav-links a { position: relative; padding-bottom: 2px; }
@@ -145,8 +153,10 @@ img { display: block; max-width: 100%; }
 }
 .hero-inner { position: relative; z-index: 1; }
 .hero-title {
-  font-size: var(--t-hero);
-  display: flex; gap: .06em;
+  font-family: "BrushHonglei", var(--f-display);
+  font-weight: 400;
+  font-size: calc(var(--t-hero) * 1.14);
+  display: flex; gap: .02em;
 }
 .hero-title span { display: inline-block; }
 .hero-sub {
@@ -458,6 +468,24 @@ img { display: block; max-width: 100%; }
   font-size: max(13px, calc(15 / var(--bsw) * 100vw));
   line-height: 2.1; color: var(--ink-soft);
   max-width: 52em;
+}
+
+/* ---------- 爐香贊：宣德爐與煙 ---------- */
+#censer {
+  position: fixed;
+  right: calc(var(--pad) * .9);
+  bottom: 2vh;
+  width: min(148px, 18vw);
+  z-index: 590;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 12px 20px rgba(23, 19, 14, .3));
+}
+#incense-canvas {
+  position: fixed; inset: 0;
+  width: 100vw; height: 100vh;
+  z-index: 589;
+  pointer-events: none;
 }
 
 /* ---------- 進場動畫初始態（JS 會解除）---------- */
