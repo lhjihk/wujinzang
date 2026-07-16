@@ -3,6 +3,17 @@
 (function () {
   'use strict';
 
+  // 頂欄禮讓正文：下滑即隱、上滑即現（過首屏前不收）
+  var lastY = 0, nav = null;
+  window.addEventListener('scroll', function () {
+    nav = nav || document.querySelector('.nav');
+    if (!nav) return;
+    var y = window.scrollY;
+    if (y > 160 && y > lastY + 4) nav.classList.add('nav-hidden');
+    else if (y < lastY - 4 || y < 160) nav.classList.remove('nav-hidden');
+    lastY = y;
+  }, { passive: true });
+
   function get(obj, path) {
     return path.split('.').reduce(function (o, k) { return o && o[k]; }, obj);
   }
